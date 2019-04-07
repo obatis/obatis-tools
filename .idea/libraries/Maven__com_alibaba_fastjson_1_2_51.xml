@@ -3,11 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../maven_repository/com/alibaba/fastjson/1.2.51/fastjson-1.2.51.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../maven_repository/com/alibaba/fastjson/1.2.51/fastjson-1.2.51-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../maven_repository/com/alibaba/fastjson/1.2.51/fastjson-1.2.51-sources.jar!/" />
-    </SOURCES>
+    <JAVADOC />
+    <SOURCES />
   </library>
 </component>
