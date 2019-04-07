@@ -1,2 +1,2 @@
 # sbatis-util
-sbatis项目基础工具类
+sbatis基础工具项目库
