@@ -3,7 +3,9 @@ package com.sbatis.convert.date;
 
 import com.sbatis.validate.ValidateTool;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,11 +13,12 @@ import java.util.Date;
  * @author HuangLongPu
  */
 public class DateCommonConvert {
-	
+
 	private DateCommonConvert(){}
 
 	/**
 	 * 将传入的Date转为日期字符串，转换后格式：yyyy-MM-dd
+	 * @author HuangLongPu
 	 * @param date
 	 * @return
 	 */
@@ -28,6 +31,7 @@ public class DateCommonConvert {
 	
 	/**
 	 * 获取当前日期的字符串，格式：yyyy-MM-dd
+	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurDate() {
@@ -36,6 +40,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 将传入的Date转为日期字符串，格式：yyyy-MM-dd HH:mm:ss
+	 * @author HuangLongPu
 	 * @param dateTime
 	 * @return
 	 */
@@ -48,6 +53,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 得到当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
+	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurTime() {
@@ -56,6 +62,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取当前年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
+	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurDateTimeMillis() {
@@ -64,6 +71,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 将传入的Date转换为年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
+	 * @author HuangLongPu
 	 * @param date
 	 * @return
 	 */
@@ -76,6 +84,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取当前日期的年月，格式：yyyyMM
+	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurYearMonth() {
@@ -84,6 +93,7 @@ public class DateCommonConvert {
 	
     /**
      * 获取开始时间，格式为：yyyy-MM-dd 00:00:00
+	 * @author HuangLongPu
      * @param beginDate
      * @return
      */
@@ -96,6 +106,7 @@ public class DateCommonConvert {
     
     /**
      * 将字符串的日期格式转为开始时间字符串
+	 * @author HuangLongPu
      * @param beginDate
      * @return
      */
@@ -115,6 +126,7 @@ public class DateCommonConvert {
     
     /**
      * 将字符串的日期转为结束时间字符串
+	 * @author HuangLongPu
      * @param endDate
      * @return
      */
@@ -134,6 +146,7 @@ public class DateCommonConvert {
     
     /**
      * 结束时间，格式为：yyyy-MM-dd 23:59:59
+	 * @author HuangLongPu
      * @param endDate
      * @return
      */
@@ -146,6 +159,7 @@ public class DateCommonConvert {
     
     /**
      * 根据传入的date，获取1号
+	 * @author HuangLongPu
      * @param date
      * @return
      */
@@ -158,6 +172,7 @@ public class DateCommonConvert {
     
     /**
      * 获取当前月的第一天
+	 * @author HuangLongPu
      * @return
      */
     public static String formatCurDateFirstDay() {
@@ -166,6 +181,7 @@ public class DateCommonConvert {
     
     /**
      * 获取时间戳，long类型格式
+	 * @author HuangLongPu
      * @return
      */
     public static long getTimeMillis() {
@@ -174,6 +190,7 @@ public class DateCommonConvert {
     
     /**
      * 获取当前日期，返回Date类型
+	 * @author HuangLongPu
      * @return
      */
     public static Date getCurDate() {
@@ -182,6 +199,7 @@ public class DateCommonConvert {
     
     /**
      * 将传入的时间格式字符串转为Date类型，传入格式：yyyy-MM-dd HH:mm:ss
+	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -215,9 +233,35 @@ public class DateCommonConvert {
     	}
     	return null;
     }
+
+	/**
+	 * 将日期格式字符串转为Date类型，格式：可选，默认为yyyy-mm-dd
+	 * @author HuangLongPu
+	 * @param date    String 字符型日期
+	 * @param format  String 格式
+	 * @return Date 日期
+	 */
+	public static Date parseDate(String date, String format) {
+		if(ValidateTool.isEmpty(date)) {
+			return null;
+		}
+
+		if(ValidateTool.isEmpty(format)) {
+			format = DefaultDateConstant.DATE_PATTERN;
+		}
+
+		try {
+			DateFormat dateFormat = new SimpleDateFormat(format);
+			return dateFormat.parse(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
     
     /**
      * 获取开始时间，格式：yyyy-MM-dd 00:00:00
+	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -236,6 +280,7 @@ public class DateCommonConvert {
     
     /**
      * 获取结束时间，格式：yyyy-MM-dd 23:59:59
+	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -255,6 +300,7 @@ public class DateCommonConvert {
 
 	/**
 	 * 得到当前月份的第一天的Date
+	 * @author HuangLongPu
 	 * @return
 	 */
 	public static Date parseCurDateFirstDay() {
@@ -263,6 +309,7 @@ public class DateCommonConvert {
     
     /**
      * 根据传入的字符串date，获取第一天的Date
+	 * @author HuangLongPu
      * @param date
      * @return
      */
@@ -279,5 +326,5 @@ public class DateCommonConvert {
     	
     	return null;
     }
-    
+
 }
