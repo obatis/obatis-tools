@@ -45,9 +45,9 @@ public class ResponseDefaultErrorStatus {
 	/**
 	 * 6001:用户未登录
 	 */
-	public static final int NO_LOGIN_ERROR_STATUS = 6001;
+	public static final int NOT_LOGIN_ERROR_STATUS = 6001;
 	/**
 	 * 6002:请求未授权，没有操作权限
 	 */
-	public static final int NO_AUTH_ERROR_STATUS = 6002;
+	public static final int NOT_AUTH_ERROR_STATUS = 6002;
 }
