@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sbatis</groupId>
-    <artifactId>sbatis-common</artifactId>
+    <artifactId>sbatis-tools</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
