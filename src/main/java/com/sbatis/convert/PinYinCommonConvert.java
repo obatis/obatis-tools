@@ -11,7 +11,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
  * 拼音转换公共库，提供汉字转拼音和转汉字首字母拼音，基于 pinyin4j 开源库进行转换
  * @author HuangLongPu
  */
-public class PinYinConvert {
+public class PinYinCommonConvert {
 
 	/**
 	 * 将汉字转换为全拼

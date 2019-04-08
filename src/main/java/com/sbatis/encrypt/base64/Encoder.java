@@ -1,7 +1,7 @@
 package com.sbatis.encrypt.base64;
 
 
-import com.sbatis.constant.DefaultNormalConstant;
+import com.sbatis.constant.NormalCommonConstant;
 
 /**
  * base64 加密库
@@ -118,7 +118,7 @@ public class Encoder {
 	 * @return
 	 */
 	public static String encodeStr(byte[] data) {
-		return encodeStr(data, DefaultNormalConstant.CHARSET_UTF8);
+		return encodeStr(data, NormalCommonConstant.CHARSET_UTF8);
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public class Encoder {
 	public static String encodeStr(byte[] data, String charsetName) {
 		
 		if(charsetName == null || charsetName.isEmpty()) {
-    		charsetName = DefaultNormalConstant.CHARSET_UTF8;
+    		charsetName = NormalCommonConstant.CHARSET_UTF8;
     	}
 		byte[] b = encode(data);
 		try {

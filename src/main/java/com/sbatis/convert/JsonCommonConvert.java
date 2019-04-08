@@ -11,7 +11,7 @@ import com.sbatis.convert.date.DefaultDateConstant;
  * JSON转换公共库，支持Java对象于json字符串的互相转换，基于 alibaba fastjson 标准
  * @author HuangLongPu
  */
-public class JsonConvert {
+public class JsonCommonConvert {
 
 	/**
 	 * 将Json字符串转为list集合，需传入泛型class

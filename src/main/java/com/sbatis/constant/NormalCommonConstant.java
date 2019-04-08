@@ -4,9 +4,9 @@ package com.sbatis.constant;
  * 默认常量类
  * @author HuangLongPu
  */
-public class DefaultNormalConstant {
+public class NormalCommonConstant {
 
-	private DefaultNormalConstant() {}
+	private NormalCommonConstant() {}
 
 	/**
 	 * 编码格式，表示utf-8

@@ -2,11 +2,11 @@ package com.sbatis.convert;
 
 import java.math.BigDecimal;
 
-import com.sbatis.constant.DefaultNormalConstant;
+import com.sbatis.constant.NormalCommonConstant;
 import com.sbatis.validate.CommonValidate;
 
 /**
- * 转换公共库，主要用于常规类型转换
+ * 公共转换库，主要用于常规类型转换
  * @author HuangLongPu
  */
 public class CommonConvert {
@@ -55,6 +55,6 @@ public class CommonConvert {
 			value = BigDecimal.ZERO;
 		}
 
-		return value.setScale(DefaultNormalConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
+		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
 	}
 }

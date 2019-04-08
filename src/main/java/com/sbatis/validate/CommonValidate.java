@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 常规校验库
+ * 常规校验库，提供常规通用校验方法
  * @author HuangLongPu
  */
 public class CommonValidate {
@@ -14,7 +14,7 @@ public class CommonValidate {
 	 * @param value
 	 * @return
 	 */
-	public static boolean isNull(String value) {
+	public static boolean isEmpty(String value) {
 		if(value == null || "".equals(value.trim()) || "null".equals(value) || "null".equals(value.toLowerCase())) {
 			return true;
 		}
@@ -26,15 +26,15 @@ public class CommonValidate {
 	 * @param value
 	 * @return
 	 */
-	public static boolean isNull(Object value) {
+	public static boolean isEmpty(Object value) {
 		if (value == null) {
 			return true;
 		}
 
 		if (value instanceof String) {
-			return isNull((String) value);
+			return isEmpty((String) value);
 		} else {
-			return isNull(value.toString());
+			return isEmpty(value.toString());
 		}
 
 	}
@@ -45,7 +45,7 @@ public class CommonValidate {
 	 * @return
 	 */
 	public static boolean isNumber(String value) {
-		if (isNull(value)) {
+		if (isEmpty(value)) {
 			return false;
 		}
 		return (Pattern.compile("[0-9]*")).matcher(value).matches();
@@ -57,8 +57,8 @@ public class CommonValidate {
 	 * @param obj
 	 * @return
 	 */
-	public static boolean isNumberFloat(Object obj) {
-		if (isNull(obj)) {
+	public static boolean isFloat(Object obj) {
+		if (isEmpty(obj)) {
 			return false;
 		}
 		return obj.toString().matches("-?[0-9]+.*[0-9]*");
@@ -70,7 +70,7 @@ public class CommonValidate {
 	 * @return
 	 */
 	public static boolean isIdNumber(String idNumber) {
-		if (isNull(idNumber)) {
+		if (isEmpty(idNumber)) {
 			return false;
 		}
 		String str = "[1-9]{2}[0-9]{4}(19|20)[0-9]{2}" + "((0[1-9]{1})|(1[1-2]{1}))((0[1-9]{1})|([1-2]{1}[0-9]{1}|(3[0-1]{1})))"
@@ -86,7 +86,7 @@ public class CommonValidate {
 	 * @return
 	 */
 	public static boolean isPhoneNumber(String phoneNumber) {
-		if (isNull(phoneNumber)) {
+		if (isEmpty(phoneNumber)) {
 			return false;
 		}
 		String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
@@ -107,7 +107,7 @@ public class CommonValidate {
 	 */
 	public static boolean isEmail(String email) {
 
-		if (isNull(email)) {
+		if (isEmpty(email)) {
 			return false;
 		}
 		String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
@@ -123,7 +123,7 @@ public class CommonValidate {
 	 * @return
 	 */
 	public static boolean isHaveChinese(String message) {
-		if(isNull(message)) {
+		if(isEmpty(message)) {
 			return false;
 		}
 		Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
@@ -137,7 +137,7 @@ public class CommonValidate {
 	 * @return
 	 */
 	public static boolean isDate(String date) {
-		if(isNull(date)) {
+		if(isEmpty(date)) {
 			return false;
 		}
 		String rexp = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";

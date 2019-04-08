@@ -17,7 +17,7 @@ import org.modelmapper.convention.NamingConventions;
  * bean 类型转换库
  * @author HuangLongPu
  */
-public class BeanConvert {
+public class BeanCommonConvert {
 
 	private static final ModelMapper MODEL_MAPPER = new ModelMapper();
 

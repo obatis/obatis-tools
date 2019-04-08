@@ -17,7 +17,7 @@ public class Encrypt {
 	 * @param text
 	 * @return
 	 */
-	public static String md5To16(String text) {
+	public static String md5Encrypt16(String text) {
 		return toStringBuffer(text).toString().substring(8, 24);
 	}
 
@@ -26,7 +26,7 @@ public class Encrypt {
 	 * @param text
 	 * @return
 	 */
-	public static String md5To32(String text) {
+	public static String md5Encrypt32(String text) {
 		return toStringBuffer(text).toString();
 	}
 
