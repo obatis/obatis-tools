@@ -7,9 +7,9 @@ import com.sbatis.constant.NormalCommonConstant;
  * 此base64 解密库为提取原生base64包的方法，无需额外引入base64 jar包
  * @author HuangLongPu
  */
-public class DecoderTool {
+public class Base64DecoderTool {
 	
-	private DecoderTool() {}
+	private Base64DecoderTool() {}
     
     private static final byte[] decodingTable;
    
