@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * 常规校验库，提供常规通用校验方法
  * @author HuangLongPu
  */
-public class CommonValidate {
+public class ValidateTool {
 
 	/**
 	 * 针对字符串的空判断，如果为空，返回ture，否则false。null、空字符串、空格等均判断为空，会转换为小写进行比较

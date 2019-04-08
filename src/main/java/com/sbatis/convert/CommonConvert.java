@@ -3,7 +3,7 @@ package com.sbatis.convert;
 import java.math.BigDecimal;
 
 import com.sbatis.constant.NormalCommonConstant;
-import com.sbatis.validate.CommonValidate;
+import com.sbatis.validate.ValidateTool;
 
 /**
  * 公共转换库，主要用于常规类型转换
@@ -17,7 +17,7 @@ public class CommonConvert {
 	 * @return
 	 */
 	public static String toString(Object obj) {
-		if(CommonValidate.isNull(obj)) {
+		if(ValidateTool.isEmpty(obj)) {
 			return "";
 		}
 		return obj.toString();
@@ -29,7 +29,7 @@ public class CommonConvert {
 	 * @return
 	 */
 	public static BigDecimal convertBigDecimal(String value) {
-		if(CommonValidate.isNull(value)) {
+		if(ValidateTool.isEmpty(value)) {
 			return BigDecimal.ZERO;
 		}
 		
@@ -51,7 +51,7 @@ public class CommonConvert {
 	 * @return
 	 */
 	public static BigDecimal convertBigDecimalForTwo(BigDecimal value) {
-		if (CommonValidate.isNull(value)) {
+		if (ValidateTool.isEmpty(value)) {
 			value = BigDecimal.ZERO;
 		}
 

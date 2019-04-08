@@ -1,6 +1,6 @@
 package com.sbatis.convert;
 
-import com.sbatis.validate.CommonValidate;
+import com.sbatis.validate.ValidateTool;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -48,7 +48,7 @@ public class PinYinCommonConvert {
 		 * (11).t4:转化完成后的拼音
 		 */
 
-		if(CommonValidate.isNull(value)) {
+		if(ValidateTool.isEmpty(value)) {
 			return "";
 		}
 		char[] t1 = value.toCharArray();
@@ -83,7 +83,7 @@ public class PinYinCommonConvert {
 	 * @return
 	 */
 	public static String convertHeaderPinYin(String value) {
-		if(CommonValidate.isNull(value)) {
+		if(ValidateTool.isEmpty(value)) {
 			return "";
 		}
 		StringBuffer headerPinyin = new StringBuffer();
@@ -103,7 +103,7 @@ public class PinYinCommonConvert {
 		}
 		
 		// 并且将首字母拼音转为小写
-		if(!CommonValidate.isNull(headerPinyin)) {
+		if(!ValidateTool.isEmpty(headerPinyin)) {
 			return headerPinyin.toString().toLowerCase();
 		}
 		return "";

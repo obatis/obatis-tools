@@ -1,7 +1,7 @@
 package com.sbatis.convert.date;
 
 
-import com.sbatis.validate.CommonValidate;
+import com.sbatis.validate.ValidateTool;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -100,10 +100,10 @@ public class DateCommonConvert {
      * @return
      */
     public static String formatBeginDateTime(String beginDate) {
-    	if(CommonValidate.isNull(beginDate)) {
+    	if(ValidateTool.isEmpty(beginDate)) {
     		return null;
     	}
-    	if(CommonValidate.isDate(beginDate)) {
+    	if(ValidateTool.isDate(beginDate)) {
     		return beginDate + " 00:00:00";
     	}
     	Date date = parseDate(beginDate);
@@ -119,10 +119,10 @@ public class DateCommonConvert {
      * @return
      */
     public static String formatEndDateTime(String endDate) {
-    	if(CommonValidate.isNull(endDate)) {
+    	if(ValidateTool.isEmpty(endDate)) {
     		return null;
     	}
-    	if(CommonValidate.isDate(endDate)) {
+    	if(ValidateTool.isDate(endDate)) {
     		return endDate + " 23:59:59";
     	}
     	Date date = parseDate(endDate);
@@ -186,7 +186,7 @@ public class DateCommonConvert {
      * @return
      */
     public static Date parseDateTime(String dateTime) {
-    	if(CommonValidate.isNull(dateTime)) {
+    	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
     	
@@ -204,7 +204,7 @@ public class DateCommonConvert {
      * @return
      */
     public static Date parseDate(String date) {
-    	if(CommonValidate.isNull(date)) {
+    	if(ValidateTool.isEmpty(date)) {
     		return null;
     	}
     	
@@ -222,7 +222,7 @@ public class DateCommonConvert {
      * @return
      */
     public static Date parseBeginDateTime(String dateTime) {
-    	if(CommonValidate.isNull(dateTime)) {
+    	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
     	
@@ -241,7 +241,7 @@ public class DateCommonConvert {
      */
     public static Date parseEndDateTime(String dateTime) {
     	
-    	if(CommonValidate.isNull(dateTime)) {
+    	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
     	
@@ -267,7 +267,7 @@ public class DateCommonConvert {
      * @return
      */
     public static Date parseDateFirstDay(String date) {
-    	if(CommonValidate.isNull(date)) {
+    	if(ValidateTool.isEmpty(date)) {
     		return null;
     	}
     	
@@ -279,25 +279,5 @@ public class DateCommonConvert {
     	
     	return null;
     }
-    
-    public static int compare(Date date, Date targetDate) {
-    	return date.compareTo(targetDate);
-    }
-    
-//    public static int compare(Date date, Date targetDate, String format) {
-//    	if(!CommonValidate.isNull(format)) {
-//    		// 设置转换格式
-//    		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
-//    	}
-//    	return date.compareTo(targetDate);
-//    }
-    
-    public static int compareCurTime(Date date) {
-    	return date.compareTo(getCurDate());
-    }
-    
-//    public static int compareCurTime(Date date, String format) {
-//    	
-//    }
     
 }

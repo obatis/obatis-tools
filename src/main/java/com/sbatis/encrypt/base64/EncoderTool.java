@@ -10,9 +10,9 @@ import com.sbatis.constant.NormalCommonConstant;
  */
 import java.io.UnsupportedEncodingException;
 
-public class Encoder {
+public class EncoderTool {
 	
-	private Encoder() {}
+	private EncoderTool() {}
 	
 	private static final byte[] encodingTable = {
         (byte) 'A', (byte) 'B', (byte) 'C', (byte) 'D', (byte) 'E',
