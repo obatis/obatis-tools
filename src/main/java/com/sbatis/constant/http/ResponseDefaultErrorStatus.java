@@ -25,7 +25,7 @@ public class ResponseDefaultErrorStatus {
 	/**
 	 * 5001:微服务熔断异常
 	 */
-	public static final int FALL_BACK_ERROR_STATUS = 5001;
+	public static final int FAIL_BACK_ERROR_STATUS = 5001;
 	/**
 	 * 5002:HTTP URL 地址错误
 	 */
