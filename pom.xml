@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sbatis</groupId>
-    <artifactId>sbatis-tools</artifactId>
+    <groupId>com.obatis</groupId>
+    <artifactId>obatis-tools</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 

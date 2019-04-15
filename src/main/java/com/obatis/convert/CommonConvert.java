@@ -1,9 +1,9 @@
-package com.sbatis.convert;
+package com.obatis.convert;
 
 import java.math.BigDecimal;
 
-import com.sbatis.constant.NormalCommonConstant;
-import com.sbatis.validate.ValidateTool;
+import com.obatis.constant.NormalCommonConstant;
+import com.obatis.validate.ValidateTool;
 
 /**
  * 公共转换库，主要用于常规类型转换

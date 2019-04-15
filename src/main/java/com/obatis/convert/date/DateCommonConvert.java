@@ -1,7 +1,7 @@
-package com.sbatis.convert.date;
+package com.obatis.convert.date;
 
 
-import com.sbatis.validate.ValidateTool;
+import com.obatis.validate.ValidateTool;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -1,7 +1,7 @@
-package com.sbatis.encrypt.base64;
+package com.obatis.encrypt.base64;
 
 
-import com.sbatis.constant.NormalCommonConstant;
+import com.obatis.constant.NormalCommonConstant;
 
 /**
  * base64 加密库

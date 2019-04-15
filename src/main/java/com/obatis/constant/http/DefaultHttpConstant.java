@@ -1,4 +1,4 @@
-package com.sbatis.constant.http;
+package com.obatis.constant.http;
 
 /**
  * 定义HTTP网络请求基本常量

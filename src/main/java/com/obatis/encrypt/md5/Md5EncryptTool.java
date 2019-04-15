@@ -1,4 +1,4 @@
-package com.sbatis.encrypt.md5;
+package com.obatis.encrypt.md5;
 
 import java.security.MessageDigest;
 

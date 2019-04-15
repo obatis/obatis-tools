@@ -1,4 +1,4 @@
-package com.sbatis.constant.http;
+package com.obatis.constant.http;
 
 /**
  * 定义网络请求基础异常错误状态异常码，框架默认使用，该会用于请求返回处理时引用

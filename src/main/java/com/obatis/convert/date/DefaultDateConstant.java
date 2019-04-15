@@ -1,4 +1,4 @@
-package com.sbatis.convert.date;
+package com.obatis.convert.date;
 
 import java.text.SimpleDateFormat;
 

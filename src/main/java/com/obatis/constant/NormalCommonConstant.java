@@ -1,4 +1,4 @@
-package com.sbatis.constant;
+package com.obatis.constant;
 
 /**
  * 默认常量类

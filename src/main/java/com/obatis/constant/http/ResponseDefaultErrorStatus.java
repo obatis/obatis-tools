@@ -1,4 +1,4 @@
-package com.sbatis.constant.http;
+package com.obatis.constant.http;
 
 /**
  * 请求异常结果返回状态码，该会用于请求返回处理时引用
