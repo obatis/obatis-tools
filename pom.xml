@@ -8,6 +8,7 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>obatis-tools</name>
+    <url>https://github.com/obatis/obatis-tools</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,6 +16,32 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <scm>
+        <url>https://github.com/obatis/obatis-tools</url>
+        <connection>scm:git:https://github.com/obatis/obatis-tools.git</connection>
+    </scm>
+
+    <organization>
+        <name>obatis Group</name>
+        <url>https://github.com/obatis</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>HuangLongPu</id>
+            <name>黄龙普</name>
+            <email>huanglongpu@126.com</email>
+        </developer>
+    </developers>
+
 
     <dependencies>
         <dependency>
