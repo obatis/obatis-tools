@@ -6,6 +6,7 @@ import com.obatis.validate.ValidateTool;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -326,5 +327,153 @@ public class DateCommonConvert {
     	
     	return null;
     }
+
+	/**
+	 * 在当前日期的基础上，增加分钟数操作
+	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
+	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
+	 * 如果传入的分钟数为0，则不进行任何操作
+	 * @author HuangLongPu
+	 * @param minutes       操作增加或者减少的分钟数
+	 * @return
+	 */
+	public static Date addMinuteByCurDate(int minutes) {
+		return addMinute(getCurDate(), minutes);
+	}
+
+	/**
+	 * 在传入日期格式的基础上增加分钟数操作。
+	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
+	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
+	 * 如果传入的分钟数为0，则不进行任何操作
+	 * @author HuangLongPu
+	 * @param date           传入的 date 日期
+	 * @param minutes        操作增加或者减少的分钟数
+	 * @return
+	 */
+    public static Date addMinute(Date date, int minutes) {
+
+		/**
+		 * 如果传入的日期为空，或者分钟数为空，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(date == null || minutes == 0) {
+    		return date;
+		}
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.MINUTE, minutes);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 在当前日期的基础上，增加小时数操作。
+	 * 如果传入的小时数为大于0的正数，表示在传入日期的基础上增加小时数。
+	 * 如果传入的小时数为小于0的负数，表示在传入日期的基础上减少小时数。
+	 * 如果传入的小时数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param hours     操作增加或者减少的小时数
+	 * @return
+	 */
+	public static Date addHourByCurDate(int hours) {
+		return addHour(getCurDate(), hours);
+	}
+
+	/**
+	 * 在传入日期的基础，增加小时数操作。
+	 * 如果传入的小时数为大于0的正数，表示在传入日期的基础上增加小时数。
+	 * 如果传入的小时数为小于0的负数，表示在传入日期的基础上减少小时数。
+	 * 如果传入的小时数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param date       传入的 date 日期
+	 * @param hours      操作增加或者减少的小时数
+	 * @return
+	 */
+	public static Date addHour(Date date, int hours) {
+		/**
+		 * 如果传入的日期为空，或者小时数为空，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(date == null || hours == 0) {
+			return date;
+		}
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.HOUR_OF_DAY, hours);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 在当前日期的基础上，增加天数操作。
+	 * 如果传入的天数为大于0的正数，表示在传入日期的基础上增加天数。
+	 * 如果传入的天数为小于0的负数，表示在传入日期的基础上减少天数。
+	 * 如果传入的天数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param days    操作增加或者减少的天数
+	 * @return
+	 */
+	public static Date addDayByCurDate(int days) {
+    	return addDay(getCurDate(), days);
+	}
+
+	/**
+	 * 在传入日期的基础，增加天数操作。
+	 * 如果传入的天数为大于0的正数，表示在传入日期的基础上增加天数。
+	 * 如果传入的天数为小于0的负数，表示在传入日期的基础上减少天数。
+	 * 如果传入的天数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param date      传入的 date 日期
+	 * @param days      操作增加或者减少的天数
+	 * @return
+	 */
+	public static Date addDay(Date date, int days) {
+		/**
+		 * 如果传入的日期为空，或者小时数为空，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(date == null || days == 0) {
+			return date;
+		}
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, days);
+		return calendar.getTime();
+	}
+
+	/**
+	 * 在当前日期的基础上，增加月操作。
+	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
+	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
+	 * 如果传入的月数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param months     操作增加或者减少的月数
+	 * @return
+	 */
+	public static Date addMonthbyCurDate(int months) {
+		return addMonth(getCurDate(), months);
+	}
+
+	/**
+	 * 在传入日期格式的基础上增加月操作。
+	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
+	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
+	 * 如果传入的月数为0，则不进行任何操作。
+	 * @author HuangLongPu
+	 * @param date           传入的 date 日期
+	 * @param months         操作增加或者减少的月数
+	 * @return
+	 */
+	public static Date addMonth(Date date, int months) {
+		/**
+		 * 如果传入的日期为空，或者月数为0，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(date == null || months == 0) {
+			return date;
+		}
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.MONTH, months);
+		return calendar.getTime();
+	}
 
 }
