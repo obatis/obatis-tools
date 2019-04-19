@@ -53,7 +53,6 @@ public class ValidateTool {
 
 	/**
 	 * 判断是否为数字，可以为整数、小数
-	 * 
 	 * @param obj
 	 * @return
 	 */
@@ -81,7 +80,6 @@ public class ValidateTool {
 
 	/**
 	 * 验证手机号码是否正确，正确返回true，否则返回false
-	 * 
 	 * @param phoneNumber
 	 * @return
 	 */
@@ -101,7 +99,6 @@ public class ValidateTool {
 
 	/**
 	 * 判断邮箱地址是否正确，正确返回true，否则返回false
-	 * 
 	 * @param email
 	 * @return
 	 */
@@ -118,7 +115,6 @@ public class ValidateTool {
 
 	/**
 	 * 判断是否包含有中文，有则返回 true，否则返回 false
-	 * 
 	 * @param message
 	 * @return
 	 */
