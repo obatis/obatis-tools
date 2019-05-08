@@ -13,6 +13,8 @@ import com.obatis.convert.date.DefaultDateConstant;
  */
 public class JsonCommonConvert {
 
+	private JsonCommonConvert() {}
+
 	/**
 	 * 将Json字符串转为list集合，需传入泛型class
 	 * @param json

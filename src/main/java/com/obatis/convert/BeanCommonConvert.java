@@ -19,6 +19,8 @@ import org.modelmapper.convention.NamingConventions;
  */
 public class BeanCommonConvert {
 
+	private BeanCommonConvert() {}
+
 	private static final ModelMapper MODEL_MAPPER = new ModelMapper();
 
 	static {

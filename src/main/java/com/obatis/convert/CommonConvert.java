@@ -28,7 +28,7 @@ public class CommonConvert {
 	 * @param value
 	 * @return
 	 */
-	public static BigDecimal convertBigDecimal(String value) {
+	public static BigDecimal convert(String value) {
 		if(ValidateTool.isEmpty(value)) {
 			return BigDecimal.ZERO;
 		}
@@ -41,20 +41,46 @@ public class CommonConvert {
 	 * @param value
 	 * @return
 	 */
-	public static BigDecimal convertBigDecimal(int value) {
+	public static BigDecimal convert(int value) {
 		return new BigDecimal(value);
 	}
 	
 	/**
-	 * BigDecimal 类型精度设置
+	 * BigDecimal 类型精度设置，四舍五入规则
 	 * @param value
 	 * @return
 	 */
-	public static BigDecimal convertBigDecimalForTwo(BigDecimal value) {
+	public static BigDecimal convertHalfUp(BigDecimal value) {
 		if (ValidateTool.isEmpty(value)) {
 			value = BigDecimal.ZERO;
 		}
 
 		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
+	}
+
+	/**
+	 * BigDecimal 类型精度设置，只入不舍规则
+	 * @param value
+	 * @return
+	 */
+	public static BigDecimal convertUp(BigDecimal value) {
+		if (ValidateTool.isEmpty(value)) {
+			value = BigDecimal.ZERO;
+		}
+
+		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_UP);
+	}
+
+	/**
+	 * BigDecimal 类型精度设置，只舍不如规则
+	 * @param value
+	 * @return
+	 */
+	public static BigDecimal convertDown(BigDecimal value) {
+		if (ValidateTool.isEmpty(value)) {
+			value = BigDecimal.ZERO;
+		}
+
+		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_DOWN);
 	}
 }

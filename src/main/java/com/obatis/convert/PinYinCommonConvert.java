@@ -19,35 +19,6 @@ public class PinYinCommonConvert {
 	 * @return
 	 */
 	public static String convertPinYin(String value) {
-		/*
-		 * 解释一下代码: (1).HanyuPinyinOutputFormat,定义汉语拼音的输出形式.
-		 * 
-		 * (2).HanyuPinyinCaseType,定义汉语拼音的大小写,如: LOWERCASE min2 UPPERCASE MIN2
-		 * 
-		 * (3).HanyuPinyinToneType,定义音调的显示方式.如: WITH_TONE_MARK dǎ ,带音调
-		 * WITH_TONE_NUMBER da3 ,带音调,用12345表示平上去入和轻声 WITHOUT_TONE da ,不带音调
-		 * 
-		 * (4).HanyuPinyinVCharType,定义'ü' 的显示方式.如: WITH_U_AND_COLON u:
-		 * ,u加两点表示,如律师表示为lu:shi WITH_V v ,用字母v表示,这个用搜狗输入法的人想必有些印象.
-		 * WITH_U_UNICODE ü
-		 * 
-		 * (5).input[i]).matches("[\\u4E00-\\u9FA5]+"),这个用来判断是否为中文的.
-		 * 
-		 * (6).PinyinHelper.toHanyuPinyinStringArray(input[i],
-		 * format),这个返回单字的拼音字符串数组.
-		 * 如果音调类型为WITH_TONE_NUMBER的话,"张",将返回"zhang1","李",会返回"li4".
-		 * 
-		 * (7).t0:将传入要转入的字符转为为char数组的长度
-		 * 
-		 * (8).t1:传入要转入的字符转为为char数组
-		 * 
-		 * (9).t2:通过char数组声明t2数组，将汉字的几种全拼都存到t2数组中
-		 * 
-		 * (10).t3:定义汉语拼音的输出形式
-		 * 
-		 * (11).t4:转化完成后的拼音
-		 */
-
 		if(ValidateTool.isEmpty(value)) {
 			return "";
 		}
