@@ -1,14 +1,12 @@
 package com.obatis.convert;
 
+import com.obatis.constant.NormalCommonConstant;
+import com.obatis.validate.ValidateTool;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-
-import com.obatis.constant.NormalCommonConstant;
-import com.obatis.constant.http.DefaultHttpConstant;
-import com.obatis.validate.ValidateTool;
-import com.sun.deploy.util.StringUtils;
 
 /**
  * 公共转换库，主要用于常规类型转换
