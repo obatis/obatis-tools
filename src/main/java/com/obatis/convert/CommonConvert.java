@@ -1,9 +1,14 @@
 package com.obatis.convert;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import com.obatis.constant.NormalCommonConstant;
+import com.obatis.constant.http.DefaultHttpConstant;
 import com.obatis.validate.ValidateTool;
+import com.sun.deploy.util.StringUtils;
 
 /**
  * 公共转换库，主要用于常规类型转换
@@ -82,5 +87,33 @@ public class CommonConvert {
 		}
 
 		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_DOWN);
+	}
+
+	/**
+	 * 对URL参数或者参数值进行编码
+	 * @param value
+	 * @return
+	 */
+	public static String urlEncoder(String value) {
+		try {
+			return URLEncoder.encode(value, NormalCommonConstant.CHARSET_UTF8);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	/**
+	 * 对URL参数或者参数值进行解码
+	 * @param value
+	 * @return
+	 */
+	public static String urlLDecoder(String value) {
+		try {
+			return URLDecoder.decode(value, NormalCommonConstant.CHARSET_UTF8);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 }

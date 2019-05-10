@@ -9,6 +9,8 @@ import com.obatis.constant.NormalCommonConstant;
  * @author HuangLongPu
  */
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 public class Base64EncoderTool {
 	
@@ -140,7 +142,7 @@ public class Base64EncoderTool {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 返回字符串格式，编码为utf-8
 	 * @param data
@@ -149,4 +151,5 @@ public class Base64EncoderTool {
 	public static String encodeStr(String data) {
 		return encodeStr(data.getBytes());
 	}
+
 }
