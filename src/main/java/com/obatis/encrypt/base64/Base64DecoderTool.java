@@ -115,8 +115,8 @@ public class Base64DecoderTool {
     	if(charsetName == null || charsetName.isEmpty()) {
     		charsetName = NormalCommonConstant.CHARSET_UTF8;
     	}
-    	byte[] b = decode(data);
     	try {
+    	    byte[] b = decode(data);
     		return new String(b, charsetName);
     	} catch (Exception e) {
     		e.printStackTrace();
