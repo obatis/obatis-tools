@@ -1,5 +1,7 @@
 package com.obatis.validate;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -142,4 +144,89 @@ public class ValidateTool {
 		return mat.matches();
 	}
 
+	/**
+	 * 判断值是否为0
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(Integer value) {
+		if(value == null || value.intValue() == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(String value) {
+		if(isEmpty(value)) {
+			return true;
+		} else if("0".equals(value)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(Long value) {
+		if(value == null || value.intValue() == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(Double value) {
+		if(value == null || value.intValue() == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(BigDecimal value) {
+		if(value == null || value.compareTo(BigDecimal.ZERO) == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(BigInteger value) {
+		if(value == null || value.compareTo(BigInteger.ZERO) == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 判断值是否为0，包括空也归属为0的判断
+	 * @param value
+	 * @return
+	 */
+	public static boolean isZero(Object value) {
+		if(isEmpty(value) || value.toString().equals("0")) {
+			return true;
+		}
+		return false;
+	}
 }
