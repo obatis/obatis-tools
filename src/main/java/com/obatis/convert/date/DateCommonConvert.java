@@ -91,6 +91,15 @@ public class DateCommonConvert {
 	public static String formatCurYearMonth() {
 		return DefaultDateConstant.SD_FORMAT_YEAR_MONTH.format(TimeGenerator.getTimestamp());
 	}
+
+	/**
+	 * 获取日期的年月，格式：yyyyMM
+	 * @author HuangLongPu
+	 * @return
+	 */
+	public static String formatYearMonth(Date date) {
+		return DefaultDateConstant.SD_FORMAT_YEAR_MONTH.format(date);
+	}
 	
     /**
      * 获取开始时间，格式为：yyyy-MM-dd 00:00:00
