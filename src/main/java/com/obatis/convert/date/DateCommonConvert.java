@@ -338,6 +338,43 @@ public class DateCommonConvert {
     }
 
 	/**
+	 * 在当前日期的基础上，增加秒数操作
+	 * 如果传入的秒数为大于0的正数，表示在传入日期的基础上新增秒数
+	 * 如果传入的秒数为小于0的负数，表示在传入日期的基础上减少秒数
+	 * 如果传入的秒数为0，则不进行任何操作
+	 * @author HuangLongPu
+	 * @param seconds       操作增加或者减少的秒数
+	 * @return
+	 */
+	public static Date addSecondByCurDate(int seconds) {
+		return addSecond(getCurDate(), seconds);
+	}
+
+	/**
+	 * 在传入日期格式的基础上增加秒数操作。
+	 * 如果传入的秒数为大于0的正数，表示在传入日期的基础上新增秒数
+	 * 如果传入的秒数为小于0的负数，表示在传入日期的基础上减少秒数
+	 * 如果传入的秒数为0，则不进行任何操作
+	 * @author HuangLongPu
+	 * @param date           传入的 date 日期
+	 * @param seconds        操作增加或者减少的秒数
+	 * @return
+	 */
+	public static Date addSecond(Date date, int seconds) {
+
+		/**
+		 * 如果传入的日期为空，或者分钟数为空，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(date == null || seconds == 0) {
+			return date;
+		}
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.SECOND, seconds);
+		return calendar.getTime();
+	}
+
+	/**
 	 * 在当前日期的基础上，增加分钟数操作
 	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
 	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
