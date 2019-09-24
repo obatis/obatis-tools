@@ -14,11 +14,11 @@ import java.util.concurrent.atomic.AtomicLong;
 public class TimeGenerator {
 	
     private final long period;
-    private final AtomicLong now;
+    private final AtomicLong atomicLong;
 
     private TimeGenerator(long period) {
         this.period = period;
-        this.now = new AtomicLong(System.currentTimeMillis());
+        this.atomicLong = new AtomicLong(System.currentTimeMillis());
         scheduleClockUpdating();
     }
 
@@ -42,13 +42,13 @@ public class TimeGenerator {
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                now.set(System.currentTimeMillis());
+                atomicLong.set(System.currentTimeMillis());
             }
         }, period, period, TimeUnit.MILLISECONDS);
     }
 
     private long currentTimeMillis() {
-        return now.get();
+        return atomicLong.get();
     }
     
     protected static long getTimeMillis() {
