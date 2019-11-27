@@ -3,14 +3,14 @@ package com.obatis.encrypt.base64;
 
 import com.obatis.constant.NormalCommonConstant;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * base64 加密库
  * 此base64 加密库为提取原生base64包的方法，无需额外引入base64 jar包
+ *
  * @author HuangLongPu
  */
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 public class Base64EncoderTool {
 	
