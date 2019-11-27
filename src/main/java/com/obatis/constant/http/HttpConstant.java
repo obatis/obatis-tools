@@ -29,4 +29,8 @@ public class HttpConstant {
 	 * 用户认证token信息头，放置于请求体的header中
 	 */
 	public static final String HEADER_ACCOUNT_TOKEN = "accountToken";
+	/**
+	 * 请求参数签名，放置于请求体的header中
+	 */
+	public static final String HEADER_SIGN = "sign";
 }
