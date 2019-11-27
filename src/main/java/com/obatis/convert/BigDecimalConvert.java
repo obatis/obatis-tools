@@ -60,6 +60,18 @@ public class BigDecimalConvert {
     }
 
     /**
+     * Double 类型转为 BigDecimal
+     * @param value
+     * @return
+     */
+    public static BigDecimal convert(Object value) {
+        if(ValidateTool.isEmpty(value)) {
+            return BigDecimal.ZERO;
+        }
+        return new BigDecimal(value.toString());
+    }
+
+    /**
      * BigDecimal 类型精度设置，四舍五入规则
      * @param value
      * @return
