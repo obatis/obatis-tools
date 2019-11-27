@@ -7,9 +7,6 @@ package com.obatis.constant.http;
 public class HttpConstant {
 
 	/**
-	 * HTTP 请求类型，分别定义 POST 和 GET
-	 */
-	/**
 	 * HTTP 请求类型 POST
 	 */
 	public static final String METHOD_GET = "get";
