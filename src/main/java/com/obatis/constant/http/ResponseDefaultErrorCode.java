@@ -27,6 +27,10 @@ public class ResponseDefaultErrorCode {
 	 */
 	public static final String NOT_AUTH_ERROR_CODE = "ERR0104";
 	/**
+	 * 发送邮件异常码
+	 */
+	public static final String SEND_MAIL_ERROR_CODE = "ERR0105";
+	/**
 	 * HTTP网络请求异常码，表示请求状态码非200
 	 */
 	public static final String NETWORK_ERROR_CODE = "ERR02";

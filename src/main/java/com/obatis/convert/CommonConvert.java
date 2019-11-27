@@ -28,9 +28,11 @@ public class CommonConvert {
 	
 	/**
 	 * String 类型转为 BigDecimal
+	 * 调整为由 BigDecimalConvert 类提供转换
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static BigDecimal convert(String value) {
 		if(ValidateTool.isEmpty(value)) {
 			return BigDecimal.ZERO;
@@ -41,18 +43,22 @@ public class CommonConvert {
 	
 	/**
 	 * int 类型转为 BigDecimal
+	 * 调整为由 BigDecimalConvert 类提供转换
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static BigDecimal convert(int value) {
 		return new BigDecimal(value);
 	}
 	
 	/**
 	 * BigDecimal 类型精度设置，四舍五入规则
+	 * 调整为由 BigDecimalConvert 类提供转换
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static BigDecimal convertHalfUp(BigDecimal value) {
 		if (ValidateTool.isEmpty(value)) {
 			value = BigDecimal.ZERO;
@@ -63,9 +69,11 @@ public class CommonConvert {
 
 	/**
 	 * BigDecimal 类型精度设置，只入不舍规则
+	 * 调整为由 BigDecimalConvert 类提供转换
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static BigDecimal convertUp(BigDecimal value) {
 		if (ValidateTool.isEmpty(value)) {
 			value = BigDecimal.ZERO;
@@ -76,9 +84,11 @@ public class CommonConvert {
 
 	/**
 	 * BigDecimal 类型精度设置，只舍不如规则
+	 * 调整为由 BigDecimalConvert 类提供转换
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static BigDecimal convertDown(BigDecimal value) {
 		if (ValidateTool.isEmpty(value)) {
 			value = BigDecimal.ZERO;

@@ -50,4 +50,8 @@ public class ResponseDefaultErrorStatus {
 	 * 6002:请求未授权，没有操作权限
 	 */
 	public static final int NOT_AUTH_ERROR_STATUS = 6002;
+	/**
+	 * 7001:发送邮件异常
+	 */
+	public static final int SEND_MAIL_ERROR_STATUS = 7001;
 }
