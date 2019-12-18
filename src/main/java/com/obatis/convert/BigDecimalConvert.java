@@ -16,7 +16,7 @@ public class BigDecimalConvert {
      * @return
      */
     public static BigDecimal convert(String value) {
-        if(ValidateTool.isEmpty(value)) {
+        if(ValidateTool.isEmpty(value)  || !ValidateTool.isFloat(value)) {
             return BigDecimal.ZERO;
         }
 
@@ -65,7 +65,7 @@ public class BigDecimalConvert {
      * @return
      */
     public static BigDecimal convert(Object value) {
-        if(ValidateTool.isEmpty(value)) {
+        if(ValidateTool.isEmpty(value)  || !ValidateTool.isFloat(value)) {
             return BigDecimal.ZERO;
         }
         return new BigDecimal(value.toString());

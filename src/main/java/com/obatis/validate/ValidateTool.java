@@ -42,7 +42,19 @@ public class ValidateTool {
 	}
 
 	/**
-	 * 判断是否是数字（正数）
+	 * 判断是否为整数，包括负数
+	 * @param value
+	 * @return
+	 */
+	public static boolean isNumeric(Object value) {
+		if (isEmpty(value)) {
+			return false;
+		}
+		return (Pattern.compile("^-?[0-9]+")).matcher(value.toString()).matches();
+	}
+
+	/**
+	 * 判断是否为整数（正数）
 	 * @param value
 	 * @return
 	 */
