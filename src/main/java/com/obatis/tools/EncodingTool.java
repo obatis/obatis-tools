@@ -14,7 +14,7 @@ public class EncodingTool {
      */
     public static boolean isEncodingByCharset(String value, String charset) {
         try {
-            if (value.equals(new String(value.getBytes(charset), charset))) {
+            if (value.equals(new String(value.getBytes(), charset))) {
                 return true;
             }
         } catch (UnsupportedEncodingException e) {
