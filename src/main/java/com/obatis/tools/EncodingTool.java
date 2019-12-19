@@ -7,21 +7,12 @@ import java.io.UnsupportedEncodingException;
 public class EncodingTool {
 
     /**
-     * 将传入的字符串，转为utf-8格式
+     * 判断是否为中文GBK编码
      * @param value
-     * @param charset
      * @return
      */
-    public static String encodingByCharset(String value, String charset) {
-        if(ValidateTool.isEmpty(value)) {
-            return null;
-        }
-        try {
-            return new String(value.getBytes(), charset);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static boolean isChineseEncoding(String value) {
+        return java.nio.charset.Charset.forName(CharsetConstant.CHARSET_GBK).newEncoder().canEncode(value);
     }
 
     /**
@@ -48,7 +39,7 @@ public class EncodingTool {
      * @param value
      * @return
      */
-    public static String encodingUTF8(String value) {
-        return encodingByCharset(value, CharsetConstant.CHARSET_UTF8);
+    public static String isoEncodingUTF8(String value) {
+        return encoding(value, CharsetConstant.CHARSET_ISO8859, CharsetConstant.CHARSET_UTF8);
     }
 }
