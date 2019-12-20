@@ -1,7 +1,7 @@
 package com.obatis.convert;
 
 import com.obatis.constant.NormalCommonConstant;
-import com.obatis.validate.ValidateTool;
+import com.obatis.tools.ValidateTool;
 
 import java.math.BigDecimal;
 
