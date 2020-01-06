@@ -84,7 +84,7 @@ public class DateCommonConvert {
 	}
 
 	/**
-	 * 获取当前日期的年月，格式：yyyyMM
+	 * 获取当前日期的年月，格式：yyyy-MM
 	 * @author HuangLongPu
 	 * @return
 	 */
@@ -93,7 +93,7 @@ public class DateCommonConvert {
 	}
 
 	/**
-	 * 获取日期的年月，格式：yyyyMM
+	 * 获取日期的年月，格式：yyyy-MM
 	 * @author HuangLongPu
 	 * @return
 	 */
