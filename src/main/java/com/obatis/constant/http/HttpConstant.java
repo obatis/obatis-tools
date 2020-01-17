@@ -9,11 +9,11 @@ public class HttpConstant {
 	/**
 	 * HTTP 请求类型 POST
 	 */
-	public static final String METHOD_GET = "get";
+	public static final String METHOD_GET = "GET";
 	/**
 	 * HTTP 请求类型 GET
 	 */
-	public static final String METHOD_POST = "post";
+	public static final String METHOD_POST = "POST";
 
 	/**
 	 * Http 网络请求参数，防止用户信息header 和 认证token等
