@@ -1,6 +1,7 @@
 package com.obatis.convert.date;
 
 
+import com.obatis.convert.JsonCommonConvert;
 import com.obatis.tools.ValidateTool;
 
 import java.text.DateFormat;
@@ -36,7 +37,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static String formatCurDate() {
-		return formatDate(getCurDate());
+		return formatDate(getCurrentDateTime());
 	}
 
 	/**
@@ -186,7 +187,7 @@ public class DateCommonConvert {
      * @return
      */
     public static String formatCurDateFirstDay() {
-    	return formatDateFirstDay(getCurDate());
+    	return formatDateFirstDay(getCurrentDateTime());
     }
     
     /**
@@ -197,15 +198,23 @@ public class DateCommonConvert {
     public static long getTimeMillis() {
         return TimeGenerator.getTimeMillis();
     }
-    
-    /**
-     * 获取当前日期，返回Date类型
-	 * @author HuangLongPu
-     * @return
-     */
-    public static Date getCurDate() {
-    	return TimeGenerator.getTimestamp();
+
+	/**
+	 * 获取当前日期，返回Date类型(格式：yyyy-MM-dd)
+	 * @return
+	 */
+	public static Date getCurrentDate() {
+		return parseDate(formatCurDate());
     }
+
+	/**
+	 * 获取当前时间，返回Date类型(格式：yyyy-MM-dd HH:mm:ss)
+	 * @author HuangLongPu
+	 * @return
+	 */
+	public static Date getCurrentDateTime() {
+		return TimeGenerator.getTimestamp();
+	}
     
     /**
      * 将传入的时间格式字符串转为Date类型，传入格式：yyyy-MM-dd HH:mm:ss
@@ -347,7 +356,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static Date addSecondByCurDate(int seconds) {
-		return addSecond(getCurDate(), seconds);
+		return addSecond(getCurrentDateTime(), seconds);
 	}
 
 	/**
@@ -384,7 +393,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static Date addMinuteByCurDate(int minutes) {
-		return addMinute(getCurDate(), minutes);
+		return addMinute(getCurrentDateTime(), minutes);
 	}
 
 	/**
@@ -421,7 +430,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static Date addHourByCurDate(int hours) {
-		return addHour(getCurDate(), hours);
+		return addHour(getCurrentDateTime(), hours);
 	}
 
 	/**
@@ -458,7 +467,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static Date addDayByCurDate(int days) {
-    	return addDay(getCurDate(), days);
+    	return addDay(getCurrentDateTime(), days);
 	}
 
 	/**
@@ -495,7 +504,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static Date addMonthbyCurDate(int months) {
-		return addMonth(getCurDate(), months);
+		return addMonth(getCurrentDateTime(), months);
 	}
 
 	/**
