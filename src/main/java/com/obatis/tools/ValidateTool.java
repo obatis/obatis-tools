@@ -244,4 +244,13 @@ public class ValidateTool {
 		}
 		return false;
 	}
+
+	/**
+	 * 判断是否为数字、字母、下划线的组合
+	 * @param value
+	 * @return
+	 */
+	public static boolean isAlphanumericUnderline(String value) {
+		return !ValidateTool.isEmpty(value) && value.toString().matches("[0-9A-Za-z_-]*");
+	}
 }
