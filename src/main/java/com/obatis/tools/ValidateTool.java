@@ -104,7 +104,11 @@ public class ValidateTool {
 		if (isEmpty(phoneNumber)) {
 			return false;
 		}
-		String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
+//		String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
+		/**
+		 * 2020年5月新增165、172、174、191、195 等号段的验证
+		 */
+		String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(16[5,6])|(17[0-8])|(18[0-9])|(19[1、5、8、9]))\\d{8}$";
 		if (phoneNumber.length() != 11) {
 			return false;
 		} else {
@@ -250,7 +254,7 @@ public class ValidateTool {
 	 * @param value
 	 * @return
 	 */
-	public static boolean isAlphanumericUnderline(String value) {
+	public static boolean isAlphanumericUnderline(Object value) {
 		return !ValidateTool.isEmpty(value) && value.toString().matches("[0-9A-Za-z_-]*");
 	}
 }
