@@ -257,4 +257,20 @@ public class ValidateTool {
 	public static boolean isAlphanumericUnderline(Object value) {
 		return !ValidateTool.isEmpty(value) && value.toString().matches("[0-9A-Za-z_-]*");
 	}
+
+	/**
+	 * 判断车牌号格式是否正确
+	 * @param vehicleLicense
+	 * @return
+	 */
+	public static boolean isVehicleLicense(String vehicleLicense) {
+		if(vehicleLicense == null) {
+			return false;
+		}
+		String check = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领](([A-HJ-NP-Z]{2}|[A-HJ-NP-Z][0-9])[A-HJ-NP-Z0-9挂]{4,5}$)|([0-9]{2}[A-HJ-NP-Z0-9挂]{5,6}$)";
+		Pattern regex = Pattern.compile(check);
+		Matcher matcher = regex.matcher(vehicleLicense);
+		return matcher.matches();
+	}
+
 }
