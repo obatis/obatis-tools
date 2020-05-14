@@ -11,21 +11,10 @@
     <description>obatis-tools, basic apply</description>
     <url>https://github.com/obatis/obatis-tools</url>
 
-    <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-            <!--<id>oss</id>-->
-            <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-        <!--</snapshotRepository>-->
-        <!--<repository>-->
-            <!--<id>oss</id>-->
-            <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-        <!--</repository>-->
-    <!--</distributionManagement>-->
-
     <distributionManagement>
         <repository>
-            <id>private-oss</id>
-            <url>http://maven.gclasp.com/nexus/content/repositories/releases/</url>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
