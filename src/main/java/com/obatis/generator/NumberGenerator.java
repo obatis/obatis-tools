@@ -1,4 +1,4 @@
-package com.obatis.core.generator;
+package com.obatis.generator;
 
 import com.obatis.convert.date.DateCommonConvert;
 
