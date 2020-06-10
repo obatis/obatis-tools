@@ -20,7 +20,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 将传入的Date转为日期字符串，转换后格式：yyyy-MM-dd
-	 * @author HuangLongPu
 	 * @param date
 	 * @return
 	 */
@@ -33,7 +32,6 @@ public class DateCommonConvert {
 	
 	/**
 	 * 获取当前日期的字符串，格式：yyyy-MM-dd
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurDate() {
@@ -42,7 +40,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 将传入的Date转为日期字符串，格式：yyyy-MM-dd HH:mm:ss
-	 * @author HuangLongPu
 	 * @param dateTime
 	 * @return
 	 */
@@ -55,7 +52,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 得到当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurTime() {
@@ -64,7 +60,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取当前年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurDateTimeMillis() {
@@ -73,7 +68,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 将传入的Date转换为年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
-	 * @author HuangLongPu
 	 * @param date
 	 * @return
 	 */
@@ -86,7 +80,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取当前日期的年月，格式：yyyy-MM
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatCurYearMonth() {
@@ -95,7 +88,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取日期的年月，格式：yyyy-MM
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static String formatYearMonth(Date date) {
@@ -104,7 +96,6 @@ public class DateCommonConvert {
 	
     /**
      * 获取开始时间，格式为：yyyy-MM-dd 00:00:00
-	 * @author HuangLongPu
      * @param beginDate
      * @return
      */
@@ -117,7 +108,6 @@ public class DateCommonConvert {
     
     /**
      * 将字符串的日期格式转为开始时间字符串
-	 * @author HuangLongPu
      * @param beginDate
      * @return
      */
@@ -137,7 +127,6 @@ public class DateCommonConvert {
     
     /**
      * 将字符串的日期转为结束时间字符串
-	 * @author HuangLongPu
      * @param endDate
      * @return
      */
@@ -157,7 +146,6 @@ public class DateCommonConvert {
     
     /**
      * 结束时间，格式为：yyyy-MM-dd 23:59:59
-	 * @author HuangLongPu
      * @param endDate
      * @return
      */
@@ -170,7 +158,6 @@ public class DateCommonConvert {
     
     /**
      * 根据传入的date，获取1号
-	 * @author HuangLongPu
      * @param date
      * @return
      */
@@ -183,7 +170,6 @@ public class DateCommonConvert {
     
     /**
      * 获取当前月的第一天
-	 * @author HuangLongPu
      * @return
      */
     public static String formatCurDateFirstDay() {
@@ -192,7 +178,6 @@ public class DateCommonConvert {
     
     /**
      * 获取时间戳，long类型格式
-	 * @author HuangLongPu
      * @return
      */
     public static long getTimeMillis() {
@@ -209,7 +194,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 获取当前时间，返回Date类型(格式：yyyy-MM-dd HH:mm:ss)
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static Date getCurrentDateTime() {
@@ -218,7 +202,6 @@ public class DateCommonConvert {
     
     /**
      * 将传入的时间格式字符串转为Date类型，传入格式：yyyy-MM-dd HH:mm:ss
-	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -255,7 +238,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 将日期格式字符串转为Date类型，格式：可选，默认为yyyy-mm-dd
-	 * @author HuangLongPu
 	 * @param date    String 字符型日期
 	 * @param format  String 格式
 	 * @return Date 日期
@@ -280,7 +262,6 @@ public class DateCommonConvert {
     
     /**
      * 获取开始时间，格式：yyyy-MM-dd 00:00:00
-	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -299,7 +280,6 @@ public class DateCommonConvert {
     
     /**
      * 获取结束时间，格式：yyyy-MM-dd 23:59:59
-	 * @author HuangLongPu
      * @param dateTime
      * @return
      */
@@ -319,7 +299,6 @@ public class DateCommonConvert {
 
 	/**
 	 * 得到当前月份的第一天的Date
-	 * @author HuangLongPu
 	 * @return
 	 */
 	public static Date parseCurDateFirstDay() {
@@ -328,7 +307,6 @@ public class DateCommonConvert {
     
     /**
      * 根据传入的字符串date，获取第一天的Date
-	 * @author HuangLongPu
      * @param date
      * @return
      */
@@ -351,7 +329,6 @@ public class DateCommonConvert {
 	 * 如果传入的秒数为大于0的正数，表示在传入日期的基础上新增秒数
 	 * 如果传入的秒数为小于0的负数，表示在传入日期的基础上减少秒数
 	 * 如果传入的秒数为0，则不进行任何操作
-	 * @author HuangLongPu
 	 * @param seconds       操作增加或者减少的秒数
 	 * @return
 	 */
@@ -364,7 +341,6 @@ public class DateCommonConvert {
 	 * 如果传入的秒数为大于0的正数，表示在传入日期的基础上新增秒数
 	 * 如果传入的秒数为小于0的负数，表示在传入日期的基础上减少秒数
 	 * 如果传入的秒数为0，则不进行任何操作
-	 * @author HuangLongPu
 	 * @param date           传入的 date 日期
 	 * @param seconds        操作增加或者减少的秒数
 	 * @return
@@ -388,7 +364,6 @@ public class DateCommonConvert {
 	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
 	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
 	 * 如果传入的分钟数为0，则不进行任何操作
-	 * @author HuangLongPu
 	 * @param minutes       操作增加或者减少的分钟数
 	 * @return
 	 */
@@ -401,7 +376,6 @@ public class DateCommonConvert {
 	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
 	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
 	 * 如果传入的分钟数为0，则不进行任何操作
-	 * @author HuangLongPu
 	 * @param date           传入的 date 日期
 	 * @param minutes        操作增加或者减少的分钟数
 	 * @return
@@ -425,7 +399,6 @@ public class DateCommonConvert {
 	 * 如果传入的小时数为大于0的正数，表示在传入日期的基础上增加小时数。
 	 * 如果传入的小时数为小于0的负数，表示在传入日期的基础上减少小时数。
 	 * 如果传入的小时数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param hours     操作增加或者减少的小时数
 	 * @return
 	 */
@@ -438,7 +411,6 @@ public class DateCommonConvert {
 	 * 如果传入的小时数为大于0的正数，表示在传入日期的基础上增加小时数。
 	 * 如果传入的小时数为小于0的负数，表示在传入日期的基础上减少小时数。
 	 * 如果传入的小时数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param date       传入的 date 日期
 	 * @param hours      操作增加或者减少的小时数
 	 * @return
@@ -462,7 +434,6 @@ public class DateCommonConvert {
 	 * 如果传入的天数为大于0的正数，表示在传入日期的基础上增加天数。
 	 * 如果传入的天数为小于0的负数，表示在传入日期的基础上减少天数。
 	 * 如果传入的天数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param days    操作增加或者减少的天数
 	 * @return
 	 */
@@ -475,7 +446,6 @@ public class DateCommonConvert {
 	 * 如果传入的天数为大于0的正数，表示在传入日期的基础上增加天数。
 	 * 如果传入的天数为小于0的负数，表示在传入日期的基础上减少天数。
 	 * 如果传入的天数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param date      传入的 date 日期
 	 * @param days      操作增加或者减少的天数
 	 * @return
@@ -499,7 +469,6 @@ public class DateCommonConvert {
 	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
 	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
 	 * 如果传入的月数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param months     操作增加或者减少的月数
 	 * @return
 	 */
@@ -512,7 +481,6 @@ public class DateCommonConvert {
 	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
 	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
 	 * 如果传入的月数为0，则不进行任何操作。
-	 * @author HuangLongPu
 	 * @param date           传入的 date 日期
 	 * @param months         操作增加或者减少的月数
 	 * @return
