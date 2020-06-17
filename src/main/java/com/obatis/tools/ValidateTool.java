@@ -243,10 +243,21 @@ public class ValidateTool {
 	 * @return
 	 */
 	public static boolean isZero(Object value) {
-		if(isEmpty(value) || value.toString().equals("0")) {
+		if(isEmpty(value)) {
 			return true;
+		} else if (value instanceof Integer) {
+			return isZero((Integer) value);
+		} else if (value instanceof Long) {
+			return isZero((Long) value);
+		} else if (value instanceof Double) {
+			return isZero((Double) value);
+		} else if (value instanceof BigDecimal) {
+			return isZero((BigDecimal) value);
+		} else if (value instanceof BigInteger) {
+			return isZero((BigInteger) value);
+		} else {
+			return value.toString().equals("0");
 		}
-		return false;
 	}
 
 	/**

@@ -61,5 +61,24 @@ public final class NumberGenerator {
 		return hashCode;
 	}
 
+	/**
+	 * 获取6位数的随机数字作为验证码
+	 * @return
+	 */
+	public static String getVerifyCode() {
+		return getVerifyCode(6);
+	}
 
+	/**
+	 * 获取设定位数的随机数字作为验证码
+	 * @return
+	 */
+	public static String getVerifyCode(int maxLength) {
+		StringBuffer s = new StringBuffer();
+		for (int i = 0; i < maxLength; i++) {
+			s.append(new Random().nextInt(10));
+		}
+
+		return s.toString();
+	}
 }
