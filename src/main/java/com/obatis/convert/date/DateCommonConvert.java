@@ -718,6 +718,9 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static long getEpochSecond(LocalDateTime dateTime) {
+		if(dateTime == null) {
+			return 0L;
+		}
 		return dateTime.atZone(ZoneId.systemDefault()).toInstant().getEpochSecond();
 	}
 
@@ -727,6 +730,9 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static long getEpochMilli(LocalDateTime dateTime) {
+		if(dateTime == null) {
+			return 0L;
+		}
 		return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
 
