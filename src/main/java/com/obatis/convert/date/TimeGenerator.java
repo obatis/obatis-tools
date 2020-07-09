@@ -46,8 +46,4 @@ public class TimeGenerator {
         return instance().currentTimeMillis();
     }
 
-    protected static Timestamp getTimestamp() {
-        return new Timestamp(instance().currentTimeMillis());
-    }
-    
 }

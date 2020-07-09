@@ -286,7 +286,13 @@ public class DateCommonConvert {
 			date = date.replace("/", "-");
 		}
 
-		return LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE);
+		if(date.matches("^\\d{4}-\\d{1,2}$")) {
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.YEAR_MONTH_PATTERN));
+		} else if(date.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$")){
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_PATTERN));
+		} else {
+			throw new IllegalArgumentException("error: invalid date value '" + date + "'");
+		}
 	}
 
 	/**
@@ -322,11 +328,19 @@ public class DateCommonConvert {
 			dateTime = dateTime.replace("/", "-");
 		}
 
-    	return LocalDateTime.parse(dateTime, DefaultDateConstant.FORMAT_DATE_TIME);
+		if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}$")){
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_HOUR_PATTERN));
+		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}$")){
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_HOUR_MINUTE_PATTERN));
+		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}:\\d{1,2}$")){
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_TIME_PATTERN));
+		} else {
+			throw new IllegalArgumentException("error: invalid datetime value '" + dateTime + "'");
+		}
     }
 
 	/**
-	 * 将传入的时间格式字符串转为DateTime类型，传入格式：yyyy-MM-dd HH:mm:ss
+	 * 将传入的时间格式字符串转为DateTime类型
 	 * @param dateTime
 	 * @return
 	 */
@@ -419,10 +433,6 @@ public class DateCommonConvert {
 		}
 
 		return dateTime.toLocalDate().with(TemporalAdjusters.firstDayOfMonth());
-	}
-
-	public static void main(String[] args) {
-		System.out.println(addSecond(LocalDateTime.now(), 20));
 	}
 
 	/**
