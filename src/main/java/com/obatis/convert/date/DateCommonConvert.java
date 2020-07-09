@@ -582,6 +582,30 @@ public class DateCommonConvert {
 	}
 
 	/**
+	 * 在传入时间的基础，增加天数操作。
+	 * 如果传入的天数为大于0的正数，表示在传入日期的基础上增加天数。
+	 * 如果传入的天数为小于0的负数，表示在传入日期的基础上减少天数。
+	 * 如果传入的天数为0，则不进行任何操作。
+	 * @param dateTime      传入的 date 日期
+	 * @param days      操作增加或者减少的天数
+	 * @return
+	 */
+	public static LocalDateTime addDay(LocalDateTime dateTime, int days) {
+		/**
+		 * 如果传入的日期为空，或者小时数为空，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(dateTime == null || days == 0) {
+			return dateTime;
+		}
+
+		if(days > 0) {
+			return dateTime.plusDays(days);
+		} else {
+			return dateTime.minusDays(days);
+		}
+	}
+
+	/**
 	 * 在当前日期的基础上，增加月操作。
 	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
 	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
@@ -610,7 +634,36 @@ public class DateCommonConvert {
 			return date;
 		}
 
-		return date.plusMonths(months);
+		if(months > 0) {
+			return date.plusMonths(months);
+		} else {
+			return date.minusMonths(months);
+		}
+
+	}
+
+	/**
+	 * 在传入时间格式的基础上增加月操作。
+	 * 如果传入的月数为大于0的正数，表示在传入日期的基础上增加月数。
+	 * 如果传入的月数为小于0的负数，表示在传入日期的基础上减少月数。
+	 * 如果传入的月数为0，则不进行任何操作。
+	 * @param dateTime           传入的 date 日期
+	 * @param months         操作增加或者减少的月数
+	 * @return
+	 */
+	public static LocalDateTime addMonth(LocalDateTime dateTime, int months) {
+		/**
+		 * 如果传入的日期为空，或者月数为0，则不进行任务操作，直接返回传入的 date 即可
+		 */
+		if(dateTime == null || months == 0) {
+			return dateTime;
+		}
+
+		if(months > 0) {
+			return dateTime.plusMonths(months);
+		} else {
+			return dateTime.minusMonths(months);
+		}
 	}
 
 	/**
