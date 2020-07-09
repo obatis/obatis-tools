@@ -27,7 +27,6 @@ public class DefaultDateConstant {
 	public static final String TIME_MILLIS_PATTERN = "yyyyMMddHHmmssSSS";
 	public static final String END_DATE_TIME_PATTERN = "yyyy-MM-dd 23:59:59";
 	public static final String DATE_FIRST_DAY_PATTERN = "yyyy-MM-01";
-	public static final String HOUR_MINUTE_PATTERN = "HH:mm";
 
 	/**
 	 * 常规日期格式为：yyyy-MM
@@ -73,8 +72,4 @@ public class DefaultDateConstant {
 	 * 格式为：yyyy-MM-01
 	 */
 	public static final DateTimeFormatter FORMAT_DATE_FIRST_DAY = DateTimeFormatter.ofPattern(DATE_FIRST_DAY_PATTERN);
-	/**
-	 * 格式为：HH:mm
-	 */
-	public static final DateTimeFormatter FORMAT_HOUR_MINUTE = DateTimeFormatter.ofPattern(HOUR_MINUTE_PATTERN);
 }
