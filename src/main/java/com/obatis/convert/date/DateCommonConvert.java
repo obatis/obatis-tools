@@ -353,6 +353,28 @@ public class DateCommonConvert {
 
 		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(format));
 	}
+
+	/**
+	 * 将毫秒时间戳转为 LocalDateTime
+	 * @param timestamp
+	 * @return
+	 */
+	public static LocalDateTime parseDateTimeByMilli(long timestamp) {
+		Instant instant = Instant.ofEpochMilli(timestamp);
+		ZoneId zone = ZoneId.systemDefault();
+		return LocalDateTime.ofInstant(instant, zone);
+	}
+
+	/**
+	 * 将秒时间戳转为 LocalDateTime
+	 * @param timestamp
+	 * @return
+	 */
+	public static LocalDateTime parseDateTimeBySecond(long timestamp) {
+		Instant instant = Instant.ofEpochSecond(timestamp);
+		ZoneId zone = ZoneId.systemDefault();
+		return LocalDateTime.ofInstant(instant, zone);
+	}
     
     /**
      * 获取开始时间，格式：yyyy-MM-dd 00:00:00
@@ -696,7 +718,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static long getEpochSecond(LocalDateTime dateTime) {
-		return LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
+		return dateTime.atZone(ZoneId.systemDefault()).toInstant().getEpochSecond();
 	}
 
 	/**
@@ -705,7 +727,7 @@ public class DateCommonConvert {
 	 * @return
 	 */
 	public static long getEpochMilli(LocalDateTime dateTime) {
-		return LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
+		return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
 
 }
