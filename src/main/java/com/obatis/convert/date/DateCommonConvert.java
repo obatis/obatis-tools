@@ -157,7 +157,7 @@ public class DateCommonConvert {
     		return beginDateTime + " 00:00:00";
     	}
 
-		LocalDateTime dateTime = LocalDateTime.parse(beginDateTime, DefaultDateConstant.FORMAT_DATE_TIME);
+		LocalDateTime dateTime = LocalDateTime.parse(beginDateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
     	return dateTime.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
     }
     
@@ -180,7 +180,7 @@ public class DateCommonConvert {
     		return endDateTime + " 23:59:59";
     	}
 
-		LocalDateTime dateTime = LocalDateTime.parse(endDateTime, DefaultDateConstant.FORMAT_DATE_TIME);
+		LocalDateTime dateTime = LocalDateTime.parse(endDateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
 		return dateTime.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
     }
 
@@ -284,9 +284,9 @@ public class DateCommonConvert {
 		}
 
 		if(date.matches("^\\d{4}-\\d{1,2}$")) {
-			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.YEAR_MONTH_PATTERN));
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_YEAR_MONTH_PATTERN));
 		} else if(date.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$")){
-			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_PATTERN));
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_PATTERN));
 		} else {
 			throw new IllegalArgumentException("error: invalid date value '" + date + "'");
 		}
@@ -326,11 +326,11 @@ public class DateCommonConvert {
 		}
 
 		if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_HOUR_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_HOUR_PATTERN));
 		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_HOUR_MINUTE_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_HOUR_MINUTE_PATTERN));
 		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}:\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.DATE_TIME_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
 		} else {
 			throw new IllegalArgumentException("error: invalid datetime value '" + dateTime + "'");
 		}
@@ -386,11 +386,11 @@ public class DateCommonConvert {
     		return null;
     	}
 
-		return LocalDateTime.parse(formatBeginDateTime(dateTime), DefaultDateConstant.FORMAT_DATE_TIME);
+		return LocalDateTime.parse(formatBeginDateTime(dateTime), DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
     }
     
     /**
-     * 获取结束时间，格式：yyyy-MM-dd 23:59:59
+     * 获取结束时间，输出格式：yyyy-MM-dd 23:59:59
      * @param dateTime
      * @return
      */
@@ -400,7 +400,7 @@ public class DateCommonConvert {
     		return null;
     	}
 
-		return LocalDateTime.parse(formatEndDateTime(dateTime), DefaultDateConstant.FORMAT_DATE_TIME);
+		return LocalDateTime.parse(formatEndDateTime(dateTime), DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
     }
 
 	/**
@@ -422,9 +422,9 @@ public class DateCommonConvert {
     	}
 
     	if(ValidateTool.isDate(date)) {
-			return getFirstDay(LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE));
+			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_PATTERN)));
 		} else {
-			return getFirstDay(LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE_TIME));
+			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN)));
 		}
     }
 

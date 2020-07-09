@@ -10,6 +10,12 @@ public class DefaultDateConstant {
 	
 	private DefaultDateConstant(){}
 
+	protected static final String PARSE_YEAR_MONTH_PATTERN = "yyyy-M";
+	protected static final String PARSE_DATE_PATTERN = "yyyy-M-d";
+	protected static final String PARSE_DATE_HOUR_PATTERN = "yyyy-M-d H";
+	protected static final String PARSE_DATE_HOUR_MINUTE_PATTERN = "yyyy-M-d H:m";
+	protected static final String PARSE_DATE_TIME_PATTERN = "yyyy-M-d H:m:s";
+
 	public static final String YEAR_MONTH_PATTERN = "yyyy-MM";
 	public static final String YEAR_MONTH_JOINT_PATTERN = "yyyyMM";
 	public static final String DATE_PATTERN = "yyyy-MM-dd";
