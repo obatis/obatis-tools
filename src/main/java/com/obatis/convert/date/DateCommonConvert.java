@@ -3,10 +3,7 @@ package com.obatis.convert.date;
 
 import com.obatis.tools.ValidateTool;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
@@ -691,6 +688,24 @@ public class DateCommonConvert {
 		ZoneId zoneId = ZoneId.systemDefault();
 		ZonedDateTime zdt = dateTime.atZone(zoneId);
 		return Date.from(zdt.toInstant());
+	}
+
+	/**
+	 * 获取时间戳，秒
+	 * @param dateTime
+	 * @return
+	 */
+	public static long getEpochSecond(LocalDateTime dateTime) {
+		return LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
+	}
+
+	/**
+	 * 获取时间戳，毫秒
+	 * @param dateTime
+	 * @return
+	 */
+	public static long getEpochMilli(LocalDateTime dateTime) {
+		return LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
 	}
 
 }
