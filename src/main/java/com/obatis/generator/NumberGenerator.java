@@ -25,7 +25,7 @@ public final class NumberGenerator {
 	 * @return
 	 */
 	public static final BigInteger getNumber() {
-		return new BigInteger(DateCommonConvert.formatCurDateTimeMillis() + handleNumber());
+		return new BigInteger(DateCommonConvert.formatDateTimeMillis() + handleNumber());
 	}
 
 	/**

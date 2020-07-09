@@ -3,11 +3,9 @@ package com.obatis.convert.date;
 
 import com.obatis.tools.ValidateTool;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * Date转换公共组件库
@@ -22,19 +20,19 @@ public class DateCommonConvert {
 	 * @param date
 	 * @return
 	 */
-	public static String formatDate(Date date) {
+	public static String formatDate(LocalDate date) {
 		if(date == null) {
 			return null;
 		}
-		return DefaultDateConstant.SD_FORMAT_DATE.format(date);
+		return date.format(DefaultDateConstant.FORMAT_DATE);
 	}
 	
 	/**
 	 * 获取当前日期的字符串，格式：yyyy-MM-dd
 	 * @return
 	 */
-	public static String formatCurDate() {
-		return formatDate(getCurrentDateTime());
+	public static String formatDate() {
+		return formatDate(LocalDate.now());
 	}
 
 	/**
@@ -42,55 +40,63 @@ public class DateCommonConvert {
 	 * @param dateTime
 	 * @return
 	 */
-	public static String formatDateTime(Date dateTime) {
+	public static String formatDateTime(LocalDateTime dateTime) {
 		if(dateTime == null) {
 			return null;
 		}
-		return DefaultDateConstant.SD_FORMAT_DATE_TIME.format(dateTime);
+		return dateTime.format(DefaultDateConstant.FORMAT_DATE_TIME);
 	}
 
 	/**
 	 * 得到当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
 	 * @return
 	 */
-	public static String formatCurTime() {
-		return formatDateTime(TimeGenerator.getTimestamp());
+	public static String formatDateTime() {
+		return formatDateTime(LocalDateTime.now());
 	}
 
 	/**
 	 * 获取当前年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
 	 * @return
 	 */
-	public static String formatCurDateTimeMillis() {
-		return formatDateTimeMillis(TimeGenerator.getTimestamp());
+	public static String formatDateTimeMillis() {
+		return formatDateTimeMillis(LocalDateTime.now());
 	}
 
 	/**
 	 * 将传入的Date转换为年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
-	 * @param date
+	 * @param dateTime
 	 * @return
 	 */
-	public static String formatDateTimeMillis(Date date) {
-		if(date == null) {
+	public static String formatDateTimeMillis(LocalDateTime dateTime) {
+		if(dateTime == null) {
 			return null;
 		}
-		return DefaultDateConstant.SD_FORMAT_TIME_MILLIS.format(date);
+		return dateTime.format(DefaultDateConstant.FORMAT_TIME_MILLIS);
 	}
 
 	/**
 	 * 获取当前日期的年月，格式：yyyy-MM
 	 * @return
 	 */
-	public static String formatCurYearMonth() {
-		return DefaultDateConstant.SD_FORMAT_YEAR_MONTH.format(TimeGenerator.getTimestamp());
+	public static String formatYearMonth() {
+		return formatYearMonth(LocalDate.now());
 	}
 
 	/**
 	 * 获取日期的年月，格式：yyyy-MM
 	 * @return
 	 */
-	public static String formatYearMonth(Date date) {
-		return DefaultDateConstant.SD_FORMAT_YEAR_MONTH.format(date);
+	public static String formatYearMonth(LocalDate date) {
+		return date.format(DefaultDateConstant.FORMAT_YEAR_MONTH);
+	}
+
+	/**
+	 * 获取日期的年月，格式：yyyy-MM
+	 * @return
+	 */
+	public static String formatYearMonth(LocalDateTime dateTime) {
+		return dateTime.format(DefaultDateConstant.FORMAT_YEAR_MONTH);
 	}
 	
     /**
@@ -98,61 +104,97 @@ public class DateCommonConvert {
      * @param beginDate
      * @return
      */
-    public static String formatBeginDateTime(Date beginDate) {
+    public static String formatBeginDateTime(LocalDate beginDate) {
     	if(beginDate == null) {
     		return null;
     	}
-    	return DefaultDateConstant.SD_FORMAT_BEGIN_DATE_TIME.format(beginDate);
+
+    	return beginDate.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
     }
+
+	/**
+	 * 获取开始时间，格式为：yyyy-MM-dd 00:00:00
+	 * @param beginDateTime
+	 * @return
+	 */
+	public static String formatBeginDateTime(LocalDateTime beginDateTime) {
+		if(beginDateTime == null) {
+			return null;
+		}
+
+		return beginDateTime.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
+	}
     
     /**
      * 将字符串的日期格式转为开始时间字符串
-     * @param beginDate
+     * @param beginDateTime
      * @return
      */
-    public static String formatBeginDateTime(String beginDate) {
-    	if(ValidateTool.isEmpty(beginDate)) {
+    public static String formatBeginDateTime(String beginDateTime) {
+    	if(ValidateTool.isEmpty(beginDateTime)) {
     		return null;
     	}
-    	if(ValidateTool.isDate(beginDate)) {
-    		return beginDate + " 00:00:00";
+
+		// 将 '/' 转为 '-'
+		if(beginDateTime.contains("/")) {
+			beginDateTime = beginDateTime.replace("/", "-");
+		}
+
+    	if(ValidateTool.isDate(beginDateTime)) {
+    		return beginDateTime + " 00:00:00";
     	}
-    	Date date = parseDate(beginDate);
-    	if(date != null) {
-    		return DefaultDateConstant.SD_FORMAT_BEGIN_DATE_TIME.format(date);
-    	}
-    	return null;
+
+		LocalDateTime dateTime = LocalDateTime.parse(beginDateTime, DefaultDateConstant.FORMAT_DATE_TIME);
+    	return dateTime.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
     }
     
     /**
      * 将字符串的日期转为结束时间字符串
-     * @param endDate
+     * @param endDateTime
      * @return
      */
-    public static String formatEndDateTime(String endDate) {
-    	if(ValidateTool.isEmpty(endDate)) {
+    public static String formatEndDateTime(String endDateTime) {
+    	if(ValidateTool.isEmpty(endDateTime)) {
     		return null;
     	}
-    	if(ValidateTool.isDate(endDate)) {
-    		return endDate + " 23:59:59";
+
+		// 将 '/' 转为 '-'
+		if(endDateTime.contains("/")) {
+			endDateTime = endDateTime.replace("/", "-");
+		}
+
+    	if(ValidateTool.isDate(endDateTime)) {
+    		return endDateTime + " 23:59:59";
     	}
-    	Date date = parseDate(endDate);
-    	if(date != null) {
-    		return DefaultDateConstant.SD_FORMAT_END_DATE_TIME.format(date);
-    	}
-    	return null;
+
+		LocalDateTime dateTime = LocalDateTime.parse(endDateTime, DefaultDateConstant.FORMAT_DATE_TIME);
+		return dateTime.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
     }
+
+	/**
+	 * 结束时间，格式为：yyyy-MM-dd 23:59:59
+	 * @param endDate
+	 * @return
+	 */
+	public static String formatEndDateTime(LocalDate endDate) {
+		if(endDate == null) {
+			return null;
+		}
+
+		return endDate.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
+	}
     
     /**
      * 结束时间，格式为：yyyy-MM-dd 23:59:59
-     * @param endDate
+     * @param endDateTime
      * @return
      */
-    public static String formatEndDateTime(Date endDate) {
-    	if(endDate == null) {
+    public static String formatEndDateTime(LocalDateTime endDateTime) {
+    	if(endDateTime == null) {
     		return null;
     	}
-    	return DefaultDateConstant.SD_FORMAT_END_DATE_TIME.format(endDate);
+
+    	return endDateTime.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
     }
     
     /**
@@ -160,19 +202,33 @@ public class DateCommonConvert {
      * @param date
      * @return
      */
-    public static String formatDateFirstDay(Date date) {
+    public static String formatFirstDay(LocalDate date) {
     	if(date == null) {
     		return null;
     	}
-    	return DefaultDateConstant.SD_FORMAT_DATE_FIRST_DAY.format(date);
+
+    	return date.format(DefaultDateConstant.FORMAT_DATE_FIRST_DAY);
     }
+
+	/**
+	 * 根据传入的时间，获取1号
+	 * @param dateTime
+	 * @return
+	 */
+	public static String formatFirstDay(LocalDateTime dateTime) {
+		if(dateTime == null) {
+			return null;
+		}
+
+		return dateTime.format(DefaultDateConstant.FORMAT_DATE_FIRST_DAY);
+	}
     
     /**
      * 获取当前月的第一天
      * @return
      */
-    public static String formatCurDateFirstDay() {
-    	return formatDateFirstDay(getCurrentDateTime());
+    public static String formatFirstDay() {
+    	return formatFirstDay(getDate());
     }
     
     /**
@@ -187,16 +243,16 @@ public class DateCommonConvert {
 	 * 获取当前日期，返回Date类型(格式：yyyy-MM-dd)
 	 * @return
 	 */
-	public static Date getCurrentDate() {
-		return parseDate(formatCurDate());
+	public static LocalDate getDate() {
+		return LocalDate.now();
     }
 
 	/**
 	 * 获取当前时间，返回Date类型(格式：yyyy-MM-dd HH:mm:ss)
 	 * @return
 	 */
-	public static Date getCurrentDateTime() {
-		return TimeGenerator.getTimestamp();
+	public static LocalDateTime getDateTime() {
+		return LocalDateTime.now();
 	}
     
     /**
@@ -204,17 +260,17 @@ public class DateCommonConvert {
      * @param dateTime
      * @return
      */
-    public static Date parseDateTime(String dateTime) {
+    public static LocalDateTime parseDateTime(String dateTime) {
     	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
-    	
-    	try {
-			return DefaultDateConstant.SD_FORMAT_DATE_TIME.parse(dateTime);
-		} catch (ParseException e) {
-			e.printStackTrace();
+
+		// 将 '/' 转为 '-'
+		if(dateTime.contains("/")) {
+			dateTime = dateTime.replace("/", "-");
 		}
-    	return null;
+
+    	return LocalDateTime.parse(dateTime, DefaultDateConstant.FORMAT_DATE_TIME);
     }
     
     /**
@@ -222,69 +278,30 @@ public class DateCommonConvert {
      * @param date
      * @return
      */
-    public static Date parseDate(String date) {
+    public static LocalDate parseDate(String date) {
     	if(ValidateTool.isEmpty(date)) {
     		return null;
     	}
-    	
-    	try {
-    		return DefaultDateConstant.SD_FORMAT_DATE.parse(date);
-    	} catch (ParseException e) {
-    		e.printStackTrace();
-    	}
-    	return null;
-    }
-
-	/**
-	 * 将日期格式字符串转为Date类型，格式：可选，默认为yyyy-mm-dd
-	 * @param date    String 字符型日期
-	 * @param format  String 格式
-	 * @return Date 日期
-	 */
-	public static Date parseDate(String date, String format) {
-		if(ValidateTool.isEmpty(date)) {
-			return null;
-		}
-
-		if(ValidateTool.isEmpty(format)) {
-			format = DefaultDateConstant.DATE_PATTERN;
-		}
 
 		// 将 '/' 转为 '-'
 		if(date.contains("/")) {
 			date = date.replace("/", "-");
 		}
 
-		try {
-			DateFormat dateFormat = new SimpleDateFormat(format);
-			return dateFormat.parse(date);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+		return LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE);
+    }
     
     /**
      * 获取开始时间，格式：yyyy-MM-dd 00:00:00
      * @param dateTime
      * @return
      */
-    public static Date parseBeginDateTime(String dateTime) {
+    public static LocalDateTime parseBeginDateTime(String dateTime) {
     	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
 
-		// 将 '/' 转为 '-'
-		if(dateTime.contains("/")) {
-			dateTime = dateTime.replace("/", "-");
-		}
-    	
-    	try {
-			return DefaultDateConstant.SD_FORMAT_BEGIN_DATE_TIME.parse(dateTime);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-    	return null;
+		return LocalDateTime.parse(formatBeginDateTime(dateTime), DefaultDateConstant.FORMAT_DATE_TIME);
     }
     
     /**
@@ -292,31 +309,21 @@ public class DateCommonConvert {
      * @param dateTime
      * @return
      */
-    public static Date parseEndDateTime(String dateTime) {
+    public static LocalDateTime parseEndDateTime(String dateTime) {
     	
     	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
 
-		// 将 '/' 转为 '-'
-		if(dateTime.contains("/")) {
-			dateTime = dateTime.replace("/", "-");
-		}
-    	
-    	try {
-			return DefaultDateConstant.SD_FORMAT_END_DATE_TIME.parse(dateTime);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-    	return null;
+		return LocalDateTime.parse(formatEndDateTime(dateTime), DefaultDateConstant.FORMAT_DATE_TIME);
     }
 
 	/**
 	 * 得到当前月份的第一天的Date
 	 * @return
 	 */
-	public static Date parseCurDateFirstDay() {
-		return parseDateFirstDay(formatCurDate());
+	public static LocalDate getFirstDay() {
+		return getFirstDay(getDate());
 	}
     
     /**
@@ -324,24 +331,47 @@ public class DateCommonConvert {
      * @param date
      * @return
      */
-    public static Date parseDateFirstDay(String date) {
+    public static LocalDate getFirstDay(String date) {
     	if(ValidateTool.isEmpty(date)) {
     		return null;
     	}
 
-		// 将 '/' 转为 '-'
-		if(date.contains("/")) {
-			date = date.replace("/", "-");
+    	if(ValidateTool.isDate(date)) {
+			return getFirstDay(LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE));
+		} else {
+			return getFirstDay(LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE_TIME));
 		}
-    	
-    	try {
-			return DefaultDateConstant.SD_FORMAT_DATE_FIRST_DAY.parse(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-    	
-    	return null;
     }
+
+	/**
+	 * 根据传入的日期，获取日期月份第一天的日期
+	 * @param date
+	 * @return
+	 */
+	public static LocalDate getFirstDay(LocalDate date) {
+		if(date == null) {
+			return null;
+		}
+
+		return date.with(TemporalAdjusters.firstDayOfMonth());
+	}
+
+	/**
+	 * 根据传入的日期，获取日期月份第一天的日期
+	 * @param dateTime
+	 * @return
+	 */
+	public static LocalDate getFirstDay(LocalDateTime dateTime) {
+		if(dateTime == null) {
+			return null;
+		}
+
+		return dateTime.toLocalDate().with(TemporalAdjusters.firstDayOfMonth());
+	}
+
+	public static void main(String[] args) {
+		System.out.println(addSecond(LocalDateTime.now(), 20));
+	}
 
 	/**
 	 * 在当前日期的基础上，增加秒数操作
@@ -351,8 +381,8 @@ public class DateCommonConvert {
 	 * @param seconds       操作增加或者减少的秒数
 	 * @return
 	 */
-	public static Date addSecondByCurDate(int seconds) {
-		return addSecond(getCurrentDateTime(), seconds);
+	public static LocalDateTime addSecond(int seconds) {
+		return addSecond(getDateTime(), seconds);
 	}
 
 	/**
@@ -360,22 +390,24 @@ public class DateCommonConvert {
 	 * 如果传入的秒数为大于0的正数，表示在传入日期的基础上新增秒数
 	 * 如果传入的秒数为小于0的负数，表示在传入日期的基础上减少秒数
 	 * 如果传入的秒数为0，则不进行任何操作
-	 * @param date           传入的 date 日期
+	 * @param dateTime           传入的 dateTime 时间
 	 * @param seconds        操作增加或者减少的秒数
 	 * @return
 	 */
-	public static Date addSecond(Date date, int seconds) {
+	public static LocalDateTime addSecond(LocalDateTime dateTime, int seconds) {
 
 		/**
 		 * 如果传入的日期为空，或者分钟数为空，则不进行任务操作，直接返回传入的 date 即可
 		 */
-		if(date == null || seconds == 0) {
-			return date;
+		if(dateTime == null || seconds == 0) {
+			return dateTime;
 		}
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.SECOND, seconds);
-		return calendar.getTime();
+
+		if(seconds > 0) {
+			return dateTime.plusSeconds(seconds);
+		} else {
+			return dateTime.minusSeconds(seconds);
+		}
 	}
 
 	/**
@@ -386,8 +418,8 @@ public class DateCommonConvert {
 	 * @param minutes       操作增加或者减少的分钟数
 	 * @return
 	 */
-	public static Date addMinuteByCurDate(int minutes) {
-		return addMinute(getCurrentDateTime(), minutes);
+	public static LocalDateTime addMinute(int minutes) {
+		return addMinute(getDateTime(), minutes);
 	}
 
 	/**
@@ -395,22 +427,24 @@ public class DateCommonConvert {
 	 * 如果传入的分钟数为大于0的正数，表示在传入日期的基础上新增分钟数
 	 * 如果传入的分钟数为小于0的负数，表示在传入日期的基础上减少分钟数
 	 * 如果传入的分钟数为0，则不进行任何操作
-	 * @param date           传入的 date 日期
+	 * @param dateTime           传入的 dateTime 时间
 	 * @param minutes        操作增加或者减少的分钟数
 	 * @return
 	 */
-    public static Date addMinute(Date date, int minutes) {
+    public static LocalDateTime addMinute(LocalDateTime dateTime, int minutes) {
 
 		/**
 		 * 如果传入的日期为空，或者分钟数为空，则不进行任务操作，直接返回传入的 date 即可
 		 */
-		if(date == null || minutes == 0) {
-    		return date;
+		if(dateTime == null || minutes == 0) {
+    		return dateTime;
 		}
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.MINUTE, minutes);
-		return calendar.getTime();
+
+		if (minutes > 0) {
+			return dateTime.plusMinutes(minutes);
+		} else {
+			return dateTime.minusMinutes(minutes);
+		}
 	}
 
 	/**
@@ -421,8 +455,8 @@ public class DateCommonConvert {
 	 * @param hours     操作增加或者减少的小时数
 	 * @return
 	 */
-	public static Date addHourByCurDate(int hours) {
-		return addHour(getCurrentDateTime(), hours);
+	public static LocalDateTime addHour(int hours) {
+		return addHour(getDateTime(), hours);
 	}
 
 	/**
@@ -430,22 +464,23 @@ public class DateCommonConvert {
 	 * 如果传入的小时数为大于0的正数，表示在传入日期的基础上增加小时数。
 	 * 如果传入的小时数为小于0的负数，表示在传入日期的基础上减少小时数。
 	 * 如果传入的小时数为0，则不进行任何操作。
-	 * @param date       传入的 date 日期
+	 * @param dateTime       传入的 date 日期
 	 * @param hours      操作增加或者减少的小时数
 	 * @return
 	 */
-	public static Date addHour(Date date, int hours) {
+	public static LocalDateTime addHour(LocalDateTime dateTime, int hours) {
 		/**
 		 * 如果传入的日期为空，或者小时数为空，则不进行任务操作，直接返回传入的 date 即可
 		 */
-		if(date == null || hours == 0) {
-			return date;
+		if(dateTime == null || hours == 0) {
+			return dateTime;
 		}
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.HOUR_OF_DAY, hours);
-		return calendar.getTime();
+		if(hours > 0) {
+			return dateTime.plusHours(hours);
+		} else {
+			return dateTime.minusHours(hours);
+		}
 	}
 
 	/**
@@ -456,8 +491,8 @@ public class DateCommonConvert {
 	 * @param days    操作增加或者减少的天数
 	 * @return
 	 */
-	public static Date addDayByCurDate(int days) {
-    	return addDay(getCurrentDateTime(), days);
+	public static LocalDate addDay(int days) {
+    	return addDay(getDate(), days);
 	}
 
 	/**
@@ -469,7 +504,7 @@ public class DateCommonConvert {
 	 * @param days      操作增加或者减少的天数
 	 * @return
 	 */
-	public static Date addDay(Date date, int days) {
+	public static LocalDate addDay(LocalDate date, int days) {
 		/**
 		 * 如果传入的日期为空，或者小时数为空，则不进行任务操作，直接返回传入的 date 即可
 		 */
@@ -477,10 +512,11 @@ public class DateCommonConvert {
 			return date;
 		}
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.DATE, days);
-		return calendar.getTime();
+		if(days > 0) {
+			return date.plusDays(days);
+		} else {
+			return date.minusDays(days);
+		}
 	}
 
 	/**
@@ -491,8 +527,8 @@ public class DateCommonConvert {
 	 * @param months     操作增加或者减少的月数
 	 * @return
 	 */
-	public static Date addMonthbyCurDate(int months) {
-		return addMonth(getCurrentDateTime(), months);
+	public static LocalDate addMonth(int months) {
+		return addMonth(getDate(), months);
 	}
 
 	/**
@@ -504,7 +540,7 @@ public class DateCommonConvert {
 	 * @param months         操作增加或者减少的月数
 	 * @return
 	 */
-	public static Date addMonth(Date date, int months) {
+	public static LocalDate addMonth(LocalDate date, int months) {
 		/**
 		 * 如果传入的日期为空，或者月数为0，则不进行任务操作，直接返回传入的 date 即可
 		 */
@@ -512,10 +548,7 @@ public class DateCommonConvert {
 			return date;
 		}
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(Calendar.MONTH, months);
-		return calendar.getTime();
+		return date.plusMonths(months);
 	}
 
 }
