@@ -5,8 +5,11 @@ import com.obatis.tools.ValidateTool;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 
 /**
  * Date转换公共组件库
@@ -598,6 +601,33 @@ public class DateCommonConvert {
 		}
 
 		return date.plusMonths(months);
+	}
+
+	/**
+	 * 兼容Date类型，将 LocalDate 转为Date
+	 * @param date
+	 * @return
+	 */
+	public static Date toDate(LocalDate date) {
+		if(date == null) {
+			return null;
+		}
+		ZonedDateTime zonedDateTime = date.atStartOfDay(ZoneId.systemDefault());
+		return Date.from(zonedDateTime.toInstant());
+	}
+
+	/**
+	 * 兼容Date类型，将 LocalDateTime 转为Date
+	 * @param dateTime
+	 * @return
+	 */
+	public static Date toDate(LocalDateTime dateTime) {
+		if(dateTime == null) {
+			return null;
+		}
+		ZoneId zoneId = ZoneId.systemDefault();
+		ZonedDateTime zdt = dateTime.atZone(zoneId);
+		return Date.from(zdt.toInstant());
 	}
 
 }
