@@ -250,6 +250,11 @@ public class DateCommonConvert {
 			format = DefaultDateConstant.DATE_PATTERN;
 		}
 
+		// 将 '/' 转为 '-'
+		if(date.contains("/")) {
+			date = date.replace("/", "-");
+		}
+
 		try {
 			DateFormat dateFormat = new SimpleDateFormat(format);
 			return dateFormat.parse(date);
@@ -268,6 +273,11 @@ public class DateCommonConvert {
     	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
+
+		// 将 '/' 转为 '-'
+		if(dateTime.contains("/")) {
+			dateTime = dateTime.replace("/", "-");
+		}
     	
     	try {
 			return DefaultDateConstant.SD_FORMAT_BEGIN_DATE_TIME.parse(dateTime);
@@ -287,6 +297,11 @@ public class DateCommonConvert {
     	if(ValidateTool.isEmpty(dateTime)) {
     		return null;
     	}
+
+		// 将 '/' 转为 '-'
+		if(dateTime.contains("/")) {
+			dateTime = dateTime.replace("/", "-");
+		}
     	
     	try {
 			return DefaultDateConstant.SD_FORMAT_END_DATE_TIME.parse(dateTime);
@@ -313,6 +328,11 @@ public class DateCommonConvert {
     	if(ValidateTool.isEmpty(date)) {
     		return null;
     	}
+
+		// 将 '/' 转为 '-'
+		if(date.contains("/")) {
+			date = date.replace("/", "-");
+		}
     	
     	try {
 			return DefaultDateConstant.SD_FORMAT_DATE_FIRST_DAY.parse(date);
