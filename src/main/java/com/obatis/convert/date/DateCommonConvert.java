@@ -69,6 +69,18 @@ public class DateCommonConvert {
 	}
 
 	/**
+	 * 将传入的Date转为日期字符串，格式：yyyy-MM-dd HH:mm:ss
+	 * @param dateTime
+	 * @return
+	 */
+	public static String formatDateTime(LocalDateTime dateTime, String format) {
+		if(dateTime == null) {
+			return null;
+		}
+		return dateTime.format(DateTimeFormatter.ofPattern(format));
+	}
+
+	/**
 	 * 获取当前年月日时分秒毫秒时间串，格式：yyyyMMddHHmmssSSS
 	 * @return
 	 */
