@@ -261,15 +261,51 @@ public class DateCommonConvert {
     }
 
 	/**
-	 * 获取当前时间，返回Date类型(格式：yyyy-MM-dd HH:mm:ss)
+	 * 获取当前时间，返回DateTime类型(格式：yyyy-MM-dd HH:mm:ss)
 	 * @return
 	 */
 	public static LocalDateTime getDateTime() {
 		return LocalDateTime.now();
 	}
-    
+
+	/**
+	 * 将日期格式字符串转为Date类型，格式：yyyy-MM-dd
+	 * @param date
+	 * @return
+	 */
+	public static LocalDate parseDate(String date) {
+		if(ValidateTool.isEmpty(date)) {
+			return null;
+		}
+
+		// 将 '/' 转为 '-'
+		if(date.contains("/")) {
+			date = date.replace("/", "-");
+		}
+
+		return LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE);
+	}
+
+	/**
+	 * 将日期格式字符串转为Date类型，格式：yyyy-MM-dd
+	 * @param date
+	 * @return
+	 */
+	public static LocalDate parseDate(String date, String format) {
+		if(ValidateTool.isEmpty(date)) {
+			return null;
+		}
+
+		// 将 '/' 转为 '-'
+		if(date.contains("/")) {
+			date = date.replace("/", "-");
+		}
+
+		return LocalDate.parse(date, DateTimeFormatter.ofPattern(format));
+	}
+
     /**
-     * 将传入的时间格式字符串转为Date类型，传入格式：yyyy-MM-dd HH:mm:ss
+     * 将传入的时间格式字符串转为DateTime类型，传入格式：yyyy-MM-dd HH:mm:ss
      * @param dateTime
      * @return
      */
@@ -285,24 +321,24 @@ public class DateCommonConvert {
 
     	return LocalDateTime.parse(dateTime, DefaultDateConstant.FORMAT_DATE_TIME);
     }
-    
-    /**
-     * 将日期格式字符串转为Date类型，格式：yyyy-MM-dd
-     * @param date
-     * @return
-     */
-    public static LocalDate parseDate(String date) {
-    	if(ValidateTool.isEmpty(date)) {
-    		return null;
-    	}
 
-		// 将 '/' 转为 '-'
-		if(date.contains("/")) {
-			date = date.replace("/", "-");
+	/**
+	 * 将传入的时间格式字符串转为DateTime类型，传入格式：yyyy-MM-dd HH:mm:ss
+	 * @param dateTime
+	 * @return
+	 */
+	public static LocalDateTime parseDateTime(String dateTime, String format) {
+		if(ValidateTool.isEmpty(dateTime)) {
+			return null;
 		}
 
-		return LocalDate.parse(date, DefaultDateConstant.FORMAT_DATE);
-    }
+		// 将 '/' 转为 '-'
+		if(dateTime.contains("/")) {
+			dateTime = dateTime.replace("/", "-");
+		}
+
+		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(format));
+	}
     
     /**
      * 获取开始时间，格式：yyyy-MM-dd 00:00:00
