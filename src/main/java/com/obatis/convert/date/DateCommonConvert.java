@@ -5,6 +5,7 @@ import com.obatis.tools.ValidateTool;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
 /**
@@ -14,6 +15,14 @@ import java.time.temporal.TemporalAdjusters;
 public class DateCommonConvert {
 
 	private DateCommonConvert(){}
+
+	/**
+	 * 获取当前日期的字符串，格式：yyyy-MM-dd
+	 * @return
+	 */
+	public static String formatDate() {
+		return formatDate(LocalDate.now());
+	}
 
 	/**
 	 * 将传入的Date转为日期字符串，转换后格式：yyyy-MM-dd
@@ -26,13 +35,25 @@ public class DateCommonConvert {
 		}
 		return date.format(DefaultDateConstant.FORMAT_DATE);
 	}
-	
+
 	/**
-	 * 获取当前日期的字符串，格式：yyyy-MM-dd
+	 * 将传入的Date转为日期字符串，转换后格式：yyyy-MM-dd
+	 * @param date
 	 * @return
 	 */
-	public static String formatDate() {
-		return formatDate(LocalDate.now());
+	public static String formatDate(LocalDate date, String format) {
+		if(date == null) {
+			return null;
+		}
+		return date.format(DateTimeFormatter.ofPattern(format));
+	}
+
+	/**
+	 * 得到当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
+	 * @return
+	 */
+	public static String formatDateTime() {
+		return formatDateTime(LocalDateTime.now());
 	}
 
 	/**
@@ -45,14 +66,6 @@ public class DateCommonConvert {
 			return null;
 		}
 		return dateTime.format(DefaultDateConstant.FORMAT_DATE_TIME);
-	}
-
-	/**
-	 * 得到当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
-	 * @return
-	 */
-	public static String formatDateTime() {
-		return formatDateTime(LocalDateTime.now());
 	}
 
 	/**
