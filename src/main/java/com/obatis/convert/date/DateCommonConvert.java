@@ -25,6 +25,14 @@ public class DateCommonConvert {
 	}
 
 	/**
+	 * 获取当前日期的字符串，格式自定义
+	 * @return
+	 */
+	public static String formatDate(String format) {
+		return formatDate(LocalDate.now(), format);
+	}
+
+	/**
 	 * 将传入的Date转为日期字符串，转换后格式：yyyy-MM-dd
 	 * @param date
 	 * @return
@@ -57,6 +65,14 @@ public class DateCommonConvert {
 	}
 
 	/**
+	 * 得到当前时间字符串，格式自定义
+	 * @return
+	 */
+	public static String formatDateTime(String format) {
+		return formatDateTime(LocalDateTime.now(), format);
+	}
+
+	/**
 	 * 将传入的Date转为日期字符串，格式：yyyy-MM-dd HH:mm:ss
 	 * @param dateTime
 	 * @return
@@ -69,7 +85,7 @@ public class DateCommonConvert {
 	}
 
 	/**
-	 * 将传入的Date转为日期字符串，格式：yyyy-MM-dd HH:mm:ss
+	 * 将传入的Date转为日期字符串，格式自定义
 	 * @param dateTime
 	 * @return
 	 */
