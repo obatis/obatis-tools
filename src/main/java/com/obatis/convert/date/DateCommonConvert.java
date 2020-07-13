@@ -515,7 +515,7 @@ public class DateCommonConvert {
 		if(seconds > 0) {
 			return dateTime.plusSeconds(seconds);
 		} else {
-			return dateTime.minusSeconds(seconds);
+			return dateTime.minusSeconds(Math.abs(seconds));
 		}
 	}
 
@@ -552,7 +552,7 @@ public class DateCommonConvert {
 		if (minutes > 0) {
 			return dateTime.plusMinutes(minutes);
 		} else {
-			return dateTime.minusMinutes(minutes);
+			return dateTime.minusMinutes(Math.abs(minutes));
 		}
 	}
 
@@ -588,7 +588,7 @@ public class DateCommonConvert {
 		if(hours > 0) {
 			return dateTime.plusHours(hours);
 		} else {
-			return dateTime.minusHours(hours);
+			return dateTime.minusHours(Math.abs(hours));
 		}
 	}
 
@@ -624,7 +624,7 @@ public class DateCommonConvert {
 		if(days > 0) {
 			return date.plusDays(days);
 		} else {
-			return date.minusDays(days);
+			return date.minusDays(Math.abs(days));
 		}
 	}
 
@@ -648,7 +648,7 @@ public class DateCommonConvert {
 		if(days > 0) {
 			return dateTime.plusDays(days);
 		} else {
-			return dateTime.minusDays(days);
+			return dateTime.minusDays(Math.abs(days));
 		}
 	}
 
@@ -684,7 +684,7 @@ public class DateCommonConvert {
 		if(months > 0) {
 			return date.plusMonths(months);
 		} else {
-			return date.minusMonths(months);
+			return date.minusMonths(Math.abs(months));
 		}
 
 	}
@@ -709,7 +709,7 @@ public class DateCommonConvert {
 		if(months > 0) {
 			return dateTime.plusMonths(months);
 		} else {
-			return dateTime.minusMonths(months);
+			return dateTime.minusMonths(Math.abs(months));
 		}
 	}
 
@@ -763,5 +763,9 @@ public class DateCommonConvert {
 		}
 		return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
+
+    public static void main(String[] args) {
+        System.out.println(addHour(-1));
+    }
 
 }
