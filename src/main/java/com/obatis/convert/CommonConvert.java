@@ -1,6 +1,6 @@
 package com.obatis.convert;
 
-import com.obatis.constant.NormalCommonConstant;
+import com.obatis.constant.CharsetConstant;
 import com.obatis.tools.ValidateTool;
 
 import java.io.UnsupportedEncodingException;
@@ -136,77 +136,6 @@ public class CommonConvert {
 		}
 		return Double.parseDouble(value.toString());
 	}
-	
-	/**
-	 * String 类型转为 BigDecimal
-	 * 调整为由 BigDecimalConvert 类提供转换
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static BigDecimal convert(String value) {
-		if(ValidateTool.isEmpty(value)) {
-			return BigDecimal.ZERO;
-		}
-		
-		return new BigDecimal(value);
-	}
-	
-	/**
-	 * int 类型转为 BigDecimal
-	 * 调整为由 BigDecimalConvert 类提供转换
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static BigDecimal convert(int value) {
-		return new BigDecimal(value);
-	}
-	
-	/**
-	 * BigDecimal 类型精度设置，四舍五入规则
-	 * 调整为由 BigDecimalConvert 类提供转换
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static BigDecimal convertHalfUp(BigDecimal value) {
-		if (ValidateTool.isEmpty(value)) {
-			value = BigDecimal.ZERO;
-		}
-
-		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
-	}
-
-	/**
-	 * BigDecimal 类型精度设置，只入不舍规则
-	 * 调整为由 BigDecimalConvert 类提供转换
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static BigDecimal convertUp(BigDecimal value) {
-		if (ValidateTool.isEmpty(value)) {
-			value = BigDecimal.ZERO;
-		}
-
-		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_UP);
-	}
-
-	/**
-	 * BigDecimal 类型精度设置，只舍不如规则
-	 * 调整为由 BigDecimalConvert 类提供转换
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static BigDecimal convertDown(BigDecimal value) {
-		if (ValidateTool.isEmpty(value)) {
-			value = BigDecimal.ZERO;
-		}
-
-		return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_DOWN);
-	}
 
 	/**
 	 * 对URL参数或者参数值进行编码
@@ -219,7 +148,7 @@ public class CommonConvert {
 			return "";
 		}
 		try {
-			return URLEncoder.encode(value, NormalCommonConstant.CHARSET_UTF8);
+			return URLEncoder.encode(value, CharsetConstant.CHARSET_UTF8);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -236,10 +165,51 @@ public class CommonConvert {
 			return "";
 		}
 		try {
-			return URLDecoder.decode(value, NormalCommonConstant.CHARSET_UTF8);
+			return URLDecoder.decode(value, CharsetConstant.CHARSET_UTF8);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	/**
+	 * 进行html片段转义，防止xss攻击
+	 * @param source
+	 * @return
+	 */
+	public static String htmlEncode(String source) {
+		if (source == null) {
+			return "";
+		}
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < source.length(); i++) {
+			char c = source.charAt(i);
+			switch (c) {
+				case '<':
+					buffer.append("&lt;");
+					break;
+				case '>':
+					buffer.append("&gt;");
+					break;
+				case '&':
+					buffer.append("&amp;");
+					break;
+				case '"':
+					buffer.append("&quot;");
+					break;
+				case '\'':
+					buffer.append("&#x27;");
+					break;
+				case '/':
+					buffer.append("&#x2F;");
+					break;
+				case 10:
+				case 13:
+					break;
+				default:
+					buffer.append(c);
+			}
+		}
+		return buffer.toString();
 	}
 }

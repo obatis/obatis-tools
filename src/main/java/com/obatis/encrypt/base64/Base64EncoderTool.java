@@ -1,7 +1,7 @@
 package com.obatis.encrypt.base64;
 
 
-import com.obatis.constant.NormalCommonConstant;
+import com.obatis.constant.CharsetConstant;
 
 import java.io.UnsupportedEncodingException;
 
@@ -120,7 +120,7 @@ public class Base64EncoderTool {
 	 * @return
 	 */
 	public static String encodeStr(byte[] data) {
-		return encodeStr(data, NormalCommonConstant.CHARSET_UTF8);
+		return encodeStr(data, CharsetConstant.CHARSET_UTF8);
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class Base64EncoderTool {
 	public static String encodeStr(byte[] data, String charsetName) {
 		
 		if(charsetName == null || charsetName.isEmpty()) {
-    		charsetName = NormalCommonConstant.CHARSET_UTF8;
+    		charsetName = CharsetConstant.CHARSET_UTF8;
     	}
 		byte[] b = encode(data);
 		try {

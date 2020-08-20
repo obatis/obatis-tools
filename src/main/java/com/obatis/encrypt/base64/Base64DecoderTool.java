@@ -1,6 +1,6 @@
 package com.obatis.encrypt.base64;
 
-import com.obatis.constant.NormalCommonConstant;
+import com.obatis.constant.CharsetConstant;
 
 /**
  * base64 解密库
@@ -101,7 +101,7 @@ public class Base64DecoderTool {
      * @return
      */
     public static String decodeStr(byte[] data) {
-    	return decodeStr(data, NormalCommonConstant.CHARSET_UTF8);
+    	return decodeStr(data, CharsetConstant.CHARSET_UTF8);
     }
     
     /**
@@ -113,7 +113,7 @@ public class Base64DecoderTool {
     public static String decodeStr(byte[] data, String charsetName) {
     	
     	if(charsetName == null || charsetName.isEmpty()) {
-    		charsetName = NormalCommonConstant.CHARSET_UTF8;
+    		charsetName = CharsetConstant.CHARSET_UTF8;
     	}
     	try {
     	    byte[] b = decode(data);
