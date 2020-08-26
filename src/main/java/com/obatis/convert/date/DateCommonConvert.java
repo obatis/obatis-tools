@@ -764,8 +764,4 @@ public class DateCommonConvert {
 		return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
 
-    public static void main(String[] args) {
-        System.out.println(addHour(-1));
-    }
-
 }
