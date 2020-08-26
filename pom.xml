@@ -5,22 +5,16 @@
 
     <groupId>com.obatis</groupId>
     <artifactId>obatis-tools</artifactId>
-    <version>1.1.1.4-beta</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
     <name>obatis-tools</name>
     <description>obatis-tools, basic apply</description>
     <url>https://github.com/obatis/obatis-tools</url>
 
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>oss</id>-->
-            <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-        <!--</repository>-->
-    <!--</distributionManagement>-->
     <distributionManagement>
         <repository>
-            <id>private-oss</id>
-            <url>http://maven.gclasp.com/nexus/content/repositories/releases/</url>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
