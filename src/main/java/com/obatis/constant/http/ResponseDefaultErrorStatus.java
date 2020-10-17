@@ -19,6 +19,10 @@ public class ResponseDefaultErrorStatus {
 	 */
 	public static final int TOKEN_NULL_ERROR_STATUS = 3003;
 	/**
+	 * HTTP请求方式不支持，例如POST接口用GET方式请求
+	 */
+	public static final int METHOD_NOT_SUPPORT_ERROR_STATUS = 3004;
+	/**
 	 * 5000:业务异常，一般表示为进行手动异常抛出
 	 */
 	public static final int BUS_ERROR_STATUS = 5000;

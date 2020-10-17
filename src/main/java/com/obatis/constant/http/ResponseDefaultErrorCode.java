@@ -31,6 +31,10 @@ public class ResponseDefaultErrorCode {
 	 */
 	public static final String SEND_MAIL_ERROR_CODE = "ERR0105";
 	/**
+	 * HTTP请求方式不支持，例如POST接口用GET方式请求
+	 */
+	public static final String METHOD_NOT_SUPPORT_ERROR_CODE = "ERR0106";
+	/**
 	 * HTTP网络请求异常码，表示请求状态码非200
 	 */
 	public static final String NETWORK_ERROR_CODE = "ERR02";
