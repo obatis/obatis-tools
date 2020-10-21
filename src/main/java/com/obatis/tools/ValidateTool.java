@@ -12,6 +12,44 @@ import java.util.regex.Pattern;
 public class ValidateTool {
 
 	/**
+	 * 身份证号码正则表达式
+	 */
+	private static final String ID_NUMBER_REGEX = "[1-9]{1}[0-9]{5}(19|20)[0-9]{2}((0[1-9]{1})|(1[0-2]{1}))((0[1-9]{1})|([1-2]{1}[0-9]{1}|(3[0-1]{1})))[0-9]{3}[0-9x]{1}";
+	/**
+	 * 手机号码正则表达式
+	 */
+	private static final String PHONE_NUMBER_REGEX = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(16[5,6])|(17[0-8])|(18[0-9])|(19[1、5、8、9]))\\d{8}$";
+	/**
+	 * 座机号码正则表达式
+	 */
+	private static final String TELEPHONE_NUMBER_REGEX = "^0[0-9]{2,3}[-|－][0-9]{7,8}([-|－][0-9]{1,4})?$";
+	/**
+	 * 电子邮箱正则表达式
+	 */
+	private static final String EMAIL_REGEX = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+
+	/**
+	 * 身份证正则模板
+	 */
+	private static final Pattern ID_NUMBER_PATTERN = Pattern.compile(ID_NUMBER_REGEX);
+	/**
+	 * 手机号码正则模板
+	 */
+	private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile(PHONE_NUMBER_REGEX);
+	/**
+	 * 座机号码正则模板
+	 */
+	private static final Pattern TELEPHONE_NUMBER_PATTERN = Pattern.compile(TELEPHONE_NUMBER_REGEX);
+	/**
+	 * 联系电话正则模板
+	 */
+	private static final Pattern CONTACT_NUMBER_PATTERN = Pattern.compile("(" + PHONE_NUMBER_REGEX + ")|(" + TELEPHONE_NUMBER_REGEX + ")");
+	/**
+	 * 电子邮箱正则模板
+	 */
+	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+
+	/**
 	 * 针对字符串的空判断，如果为空，返回ture，否则false。null、空字符串、空格等均判断为空，会转换为小写进行比较
 	 * @param value
 	 * @return
@@ -42,7 +80,7 @@ public class ValidateTool {
 	}
 
 	/**
-	 * 判断是否为整数，包括负数
+	 * 判断是否为整数(包括负数)
 	 * @param value
 	 * @return
 	 */
@@ -89,10 +127,7 @@ public class ValidateTool {
 		/**
 		 * HuangLongPu 2019-11-01 >>>  之前为 [1-9]{2}[0-9]{4}，改为 [1-9]{1}[0-9]{5} 主要兼容比如 50开头的身份证号码
 		 */
-		String str = "[1-9]{1}[0-9]{5}(19|20)[0-9]{2}" + "((0[1-9]{1})|(1[0-2]{1}))((0[1-9]{1})|([1-2]{1}[0-9]{1}|(3[0-1]{1})))"
-				+ "[0-9]{3}[0-9x]{1}";
-		Pattern pattern = Pattern.compile(str);
-		return pattern.matcher(idNumber).matches();
+		return ID_NUMBER_PATTERN.matcher(idNumber).matches();
 	}
 
 	/**
@@ -108,14 +143,35 @@ public class ValidateTool {
 		/**
 		 * 2020年5月新增165、172、174、191、195 等号段的验证
 		 */
-		String regex = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(16[5,6])|(17[0-8])|(18[0-9])|(19[1、5、8、9]))\\d{8}$";
 		if (phoneNumber.length() != 11) {
 			return false;
 		} else {
-			Pattern p = Pattern.compile(regex);
-			Matcher m = p.matcher(phoneNumber);
-			return m.matches();
+			return PHONE_NUMBER_PATTERN.matcher(phoneNumber).matches();
 		}
+	}
+
+	/**
+	 * 验证是否为座机号码
+	 * @param telephoneNumber
+	 * @return
+	 */
+	public static boolean isTelephone(String telephoneNumber) {
+		if (isEmpty(telephoneNumber)) {
+			return false;
+		}
+		return TELEPHONE_NUMBER_PATTERN.matcher(telephoneNumber).matches();
+	}
+
+	/**
+	 * 校验联系电话格式是否正确，主要体现为包含手机号码和座机
+	 * @param contactNumber
+	 * @return
+	 */
+	public static boolean isContactNumber(String contactNumber) {
+		if (isEmpty(contactNumber)) {
+			return false;
+		}
+		return CONTACT_NUMBER_PATTERN.matcher(contactNumber).matches();
 	}
 
 	/**
@@ -128,10 +184,7 @@ public class ValidateTool {
 		if (isEmpty(email)) {
 			return false;
 		}
-		String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
-		Pattern regex = Pattern.compile(check);
-		Matcher matcher = regex.matcher(email);
-		return matcher.matches();
+		return EMAIL_PATTERN.matcher(email).matches();
 	}
 
 	/**
