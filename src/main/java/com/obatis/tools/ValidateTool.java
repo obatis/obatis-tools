@@ -328,7 +328,7 @@ public class ValidateTool {
 	 * @return
 	 */
 	public static boolean isVehicleLicense(String vehicleLicense) {
-		if(vehicleLicense == null) {
+		if(ValidateTool.isEmpty(vehicleLicense)) {
 			return false;
 		}
 		String check = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领](([A-HJ-NP-Z]{2}|[A-HJ-NP-Z][0-9])[A-HJ-NP-Z0-9挂]{4,5}$)|([0-9]{2}[A-HJ-NP-Z0-9挂]{5,6}$)";
