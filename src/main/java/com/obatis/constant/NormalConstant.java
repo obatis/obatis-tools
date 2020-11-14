@@ -4,8 +4,7 @@ package com.obatis.constant;
  * 默认常量类
  * @author HuangLongPu
  */
-@Deprecated
-public class NormalCommonConstant extends NormalConstant {
+public class NormalConstant {
 
 	/**
 	 * BigDecimal 转换小数点保留2位

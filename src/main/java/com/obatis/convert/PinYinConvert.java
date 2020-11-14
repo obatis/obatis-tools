@@ -8,12 +8,10 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 
 /**
- * 该类于2020年11月14更名为 PinYinConvert，将会在后期删除，请开发者调整引用 PinYinConvert
  * 拼音转换公共库，提供汉字转拼音和转汉字首字母拼音，基于 pinyin4j 开源库进行转换
  * @author HuangLongPu
  */
-@Deprecated
-public class PinYinCommonConvert extends PinYinConvert {
+public class PinYinConvert {
 
 	/**
 	 * 将汉字转换为全拼
