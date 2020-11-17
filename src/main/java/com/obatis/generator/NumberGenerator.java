@@ -1,6 +1,6 @@
 package com.obatis.generator;
 
-import com.obatis.convert.date.DateCommonConvert;
+import com.obatis.convert.date.DateConvert;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -25,7 +25,7 @@ public final class NumberGenerator {
 	 * @return
 	 */
 	public static final BigInteger getNumber() {
-		return new BigInteger(DateCommonConvert.formatDateTimeMillis() + handleNumber());
+		return new BigInteger(DateConvert.formatDateTimeMillis() + handleNumber());
 	}
 
 	/**
