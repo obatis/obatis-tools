@@ -39,7 +39,7 @@ public class DateConvert {
 		if(date == null) {
 			return null;
 		}
-		return date.format(DefaultDateConstant.FORMAT_DATE);
+		return date.format(DateConstant.FORMAT_DATE);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class DateConvert {
 		if(dateTime == null) {
 			return null;
 		}
-		return dateTime.format(DefaultDateConstant.FORMAT_DATE_TIME);
+		return dateTime.format(DateConstant.FORMAT_DATE_TIME);
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class DateConvert {
 		if(dateTime == null) {
 			return null;
 		}
-		return dateTime.format(DefaultDateConstant.FORMAT_TIME_MILLIS);
+		return dateTime.format(DateConstant.FORMAT_TIME_MILLIS);
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class DateConvert {
 	 * @return
 	 */
 	public static String formatYearMonth(LocalDate date) {
-		return date.format(DefaultDateConstant.FORMAT_YEAR_MONTH);
+		return date.format(DateConstant.FORMAT_YEAR_MONTH);
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class DateConvert {
 	 * @return
 	 */
 	public static String formatYearMonth(LocalDateTime dateTime) {
-		return dateTime.format(DefaultDateConstant.FORMAT_YEAR_MONTH);
+		return dateTime.format(DateConstant.FORMAT_YEAR_MONTH);
 	}
 	
     /**
@@ -148,7 +148,7 @@ public class DateConvert {
     		return null;
     	}
 
-    	return beginDate.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
+    	return beginDate.format(DateConstant.FORMAT_BEGIN_DATE_TIME);
     }
 
 	/**
@@ -161,7 +161,7 @@ public class DateConvert {
 			return null;
 		}
 
-		return beginDateTime.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
+		return beginDateTime.format(DateConstant.FORMAT_BEGIN_DATE_TIME);
 	}
     
     /**
@@ -183,8 +183,8 @@ public class DateConvert {
     		return beginDateTime + " 00:00:00";
     	}
 
-		LocalDateTime dateTime = LocalDateTime.parse(beginDateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
-    	return dateTime.format(DefaultDateConstant.FORMAT_BEGIN_DATE_TIME);
+		LocalDateTime dateTime = LocalDateTime.parse(beginDateTime, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN));
+    	return dateTime.format(DateConstant.FORMAT_BEGIN_DATE_TIME);
     }
     
     /**
@@ -206,8 +206,8 @@ public class DateConvert {
     		return endDateTime + " 23:59:59";
     	}
 
-		LocalDateTime dateTime = LocalDateTime.parse(endDateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
-		return dateTime.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
+		LocalDateTime dateTime = LocalDateTime.parse(endDateTime, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN));
+		return dateTime.format(DateConstant.FORMAT_END_DATE_TIME);
     }
 
 	/**
@@ -220,7 +220,7 @@ public class DateConvert {
 			return null;
 		}
 
-		return endDate.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
+		return endDate.format(DateConstant.FORMAT_END_DATE_TIME);
 	}
     
     /**
@@ -233,7 +233,7 @@ public class DateConvert {
     		return null;
     	}
 
-    	return endDateTime.format(DefaultDateConstant.FORMAT_END_DATE_TIME);
+    	return endDateTime.format(DateConstant.FORMAT_END_DATE_TIME);
     }
     
     /**
@@ -246,7 +246,7 @@ public class DateConvert {
     		return null;
     	}
 
-    	return date.format(DefaultDateConstant.FORMAT_DATE_FIRST_DAY);
+    	return date.format(DateConstant.FORMAT_DATE_FIRST_DAY);
     }
 
 	/**
@@ -259,7 +259,7 @@ public class DateConvert {
 			return null;
 		}
 
-		return dateTime.format(DefaultDateConstant.FORMAT_DATE_FIRST_DAY);
+		return dateTime.format(DateConstant.FORMAT_DATE_FIRST_DAY);
 	}
     
     /**
@@ -310,9 +310,9 @@ public class DateConvert {
 		}
 
 		if(date.matches("^\\d{4}-\\d{1,2}$")) {
-			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_YEAR_MONTH_PATTERN));
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DateConstant.PARSE_YEAR_MONTH_PATTERN));
 		} else if(date.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$")){
-			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_PATTERN));
+			return LocalDate.parse(date, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_PATTERN));
 		} else {
 			throw new IllegalArgumentException("error: invalid date value '" + date + "'");
 		}
@@ -352,11 +352,11 @@ public class DateConvert {
 		}
 
 		if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_HOUR_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_HOUR_PATTERN));
 		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_HOUR_MINUTE_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_HOUR_MINUTE_PATTERN));
 		} else if(dateTime.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}:\\d{1,2}$")){
-			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
+			return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN));
 		} else {
 			throw new IllegalArgumentException("error: invalid datetime value '" + dateTime + "'");
 		}
@@ -412,7 +412,7 @@ public class DateConvert {
     		return null;
     	}
 
-		return LocalDateTime.parse(formatBeginDateTime(dateTime), DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
+		return LocalDateTime.parse(formatBeginDateTime(dateTime), DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN));
     }
     
     /**
@@ -426,7 +426,7 @@ public class DateConvert {
     		return null;
     	}
 
-		return LocalDateTime.parse(formatEndDateTime(dateTime), DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN));
+		return LocalDateTime.parse(formatEndDateTime(dateTime), DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN));
     }
 
 	/**
@@ -448,9 +448,9 @@ public class DateConvert {
     	}
 
     	if(ValidateTool.isDate(date)) {
-			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_PATTERN)));
+			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_PATTERN)));
 		} else {
-			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DefaultDateConstant.PARSE_DATE_TIME_PATTERN)));
+			return getFirstDay(LocalDate.parse(date, DateTimeFormatter.ofPattern(DateConstant.PARSE_DATE_TIME_PATTERN)));
 		}
     }
 

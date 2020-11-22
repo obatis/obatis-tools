@@ -3,7 +3,7 @@ package com.obatis.convert;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.obatis.convert.date.DefaultDateConstant;
+import com.obatis.convert.date.DateConstant;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class JsonConvert {
 	 * @return
 	 */
 	public static String objConvertJson(Object obj) {
-		return JSONObject.toJSONStringWithDateFormat(obj, DefaultDateConstant.DATE_TIME_PATTERN, SerializerFeature.WriteDateUseDateFormat);
+		return JSONObject.toJSONStringWithDateFormat(obj, DateConstant.DATE_TIME_PATTERN, SerializerFeature.WriteDateUseDateFormat);
 	}
 
 }
