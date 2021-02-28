@@ -1,6 +1,6 @@
 package com.obatis.convert;
 
-import com.obatis.constant.NormalCommonConstant;
+import com.obatis.constant.NormalConstant;
 import com.obatis.tools.ValidateTool;
 
 import java.math.BigDecimal;
@@ -81,7 +81,7 @@ public class BigDecimalConvert {
             value = BigDecimal.ZERO;
         }
 
-        return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
+        return value.setScale(NormalConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_HALF_UP);
     }
 
     /**
@@ -94,7 +94,7 @@ public class BigDecimalConvert {
             value = BigDecimal.ZERO;
         }
 
-        return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_UP);
+        return value.setScale(NormalConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_UP);
     }
 
     /**
@@ -107,6 +107,6 @@ public class BigDecimalConvert {
             value = BigDecimal.ZERO;
         }
 
-        return value.setScale(NormalCommonConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_DOWN);
+        return value.setScale(NormalConstant.BIGDECIMAL_SCALE2, BigDecimal.ROUND_DOWN);
     }
 }

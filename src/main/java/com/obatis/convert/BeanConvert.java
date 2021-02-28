@@ -43,7 +43,7 @@ public class BeanConvert {
 	 * @return
 	 */
 	public static <MS, M> List<M> listConvert(Collection<MS> sourceList, Class<M> targetClass) {
-		List<M> items = new ArrayList<M>();
+		List<M> items = new ArrayList<>();
 		if (sourceList == null) {
 			return items;
 		}
@@ -59,7 +59,7 @@ public class BeanConvert {
 	 * @return
 	 */
 	public static Map<String, Object> objConvertMap(Object obj) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		if (obj == null) {
 			return map;
 		}

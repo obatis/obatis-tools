@@ -4,7 +4,6 @@ package com.obatis.encrypt.base64;
 /**
  * base64 加密库
  * 此base64 加密库为提取原生base64包的方法，无需额外引入base64 jar包
- *
  * @author HuangLongPu
  */
 

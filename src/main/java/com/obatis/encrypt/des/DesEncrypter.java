@@ -8,7 +8,7 @@ import java.security.Key;
 import java.util.Base64;
 
 /**
- * Des 加解密
+ * Des 加解密方法
  * @Author: HuangLongPu
  * @Date: 2020/11/12 17:31
  */
@@ -50,10 +50,9 @@ public class DesEncrypter {
      * @return 加密后内容
      */
     public static String encrypt(String password, String data) {
-        if (password== null || password.length() < 8) {
-            throw new RuntimeException("加密失败，key不能小于8位");
-        }
-        if (data == null) {
+
+        // 校验字符，密码有效性
+        if(!validate(password, data)) {
             return null;
         }
 
@@ -63,7 +62,6 @@ public class DesEncrypter {
             IvParameterSpec iv = new IvParameterSpec(IV_PARAMETER.getBytes(CHARSET));
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
             byte[] bytes = cipher.doFinal(data.getBytes(CHARSET));
-
             return new String(Base64.getEncoder().encode(bytes));
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,10 +77,9 @@ public class DesEncrypter {
      * @return 解密后内容
      */
     public static String decrypt(String password, String data) {
-        if (password== null || password.length() < 8) {
-            throw new RuntimeException("加密失败，key不能小于8位");
-        }
-        if (data == null) {
+
+        // 校验字符，密码有效性
+        if(!validate(password, data)) {
             return null;
         }
 
@@ -97,5 +94,22 @@ public class DesEncrypter {
         }
 
         return null;
+    }
+
+    /**
+     * 校验字符，密码有效性
+     * @return
+     */
+    private static boolean validate(String password, String data) {
+
+        if (password == null || password.length() < 8) {
+            throw new RuntimeException("加密失败，key不能小于8位");
+        }
+
+        if (data == null) {
+            return false;
+        }
+
+        return true;
     }
 }
